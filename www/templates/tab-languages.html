@@ -1,0 +1,23 @@
+<ion-view view-title="Languages">
+  <ion-content>
+
+    <div class="item item-divider">
+      Clientside, Selected Value: {{ data.serverSide }}
+    </div>
+
+
+      <ion-radio name='language' class="item-avatar" item="language"
+                  ng-repeat="language in languages"
+                  ng-value="language.id"
+                  ng-model="data.serverSide"
+                  ng-change="serverSideChange(language)"
+                  ng-cclick="clicker(language)">
+
+        <img ng-src="{{appCacheDirectory}}{{language.thumb_md5}}.png">
+        <h2>{{language.source_name}}</h2>
+        <p>{{language.name}}</p>
+
+       </ion-radio>
+
+  </ion-content>
+</ion-view>

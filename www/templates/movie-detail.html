@@ -1,0 +1,20 @@
+<ion-view view-title="{{videotitle}}" cache-view="false" id="clip-wrapper" hide-tabs>
+
+
+  <ion-content>
+
+
+        <div class="card"  ng-repeat="clip in videoclips" >
+                  <video src="{{videoplayerURL}}" poster="clip.thumb_url" class="videogular-container" id="myvideo" name="myvideo" controls webkit-playsinline autoplay >
+                    Your browser does not support HTML5 video.
+                  </video>
+
+                  <button id='playFullscreenButton' ng-click="playFullscreen()" class="button button-full button-calm button icon-right ion-chevron-right">
+                            Start now
+                        </button>
+
+video url: {{clip.videoplayerURL}} | {{videoplayerURL}}
+        </div>
+
+  </ion-content>
+</ion-view>

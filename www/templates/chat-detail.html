@@ -1,0 +1,68 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+
+
+-->
+
+<ion-view view-title="{{videotitle}}" cache-view="false">
+<ion-content class="my-menu">
+Details chat detail
+<FRAMESET cols="80%">
+<div ng-bind-html="introtext"></div>
+</FRAMESET>
+
+<!--
+      <ion-list show-delete="shouldShowDelete"
+          show-reorder="shouldShowReorder"
+          can-swipe="listCanSwipe">
+href="#/tab/clips/{{item.video_id}}"
+            <ion-item class="ionListItem item-icon-left" ng-repeat="item in videos" >
+-->
+
+
+              <ion-list>
+                            <ion-item class="ionListItemWhite" ng-repeat="item in videos"  item-type="item-icon-left item-icon-right">
+
+                              <div class="my-left-icon" >
+
+
+                                <span id="{{item.youtube_id}}" ng-show="check_visibility(item)">
+
+                                  <img src="img/icons/cell_download.png" height="32px" ng-if="!item.downloaded" ng-click="toggle_visibility(item)" >
+
+                                  <img src="img/icons/cell_downloaded.png" height="32px" ng-if="item.downloaded" ng-click="downloadedclip(item)" >
+                                  </span>
+
+
+                                  <div id="{{item.youtube_id}}_loader" ng-hide="check_visibility(item)">
+                                        <ion-spinner></ion-spinner>
+                                  </div>
+
+                              </div>
+
+                              <i class="item-profile">
+                              <img ng-src="{{appCacheDirectory}}{{item.thumb_md5}}.png" height="60px">
+                            </i>
+                              &nbsp;
+{{item.title}}<br />
+{{item.downloading}} / {{item.youtube_id}}
+
+<!--
+                                <ion-option-button class="button-info" href="#/tab/clips/{{item.video_id}}">
+
+                                </ion-option-button>
+-->
+
+
+                        <div class="item-icon-right" ng-click="viewclip(item)">
+                            <i class="icon ion-chevron-right icon-accessory"></i>
+                        </div>
+
+                </ion-item>
+
+            </ion-list>
+          </ion-content>
+        </ion-view>

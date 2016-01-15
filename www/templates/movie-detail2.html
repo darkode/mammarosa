@@ -1,0 +1,12 @@
+<ion-view view-title="{{videotitle}}" cache-view="false">
+<ion-content has-header="false">
+
+<!-- button class="button portrait-mode" ng-click="$ionicGoBack()">Back</button> -->
+
+<div class="video-container" ng-repeat="clip in videoclips">
+         <iframe src="{{clip.youtube_id}}" frameborder="0" width="560" height="315"></iframe>
+</div>
+
+
+</ion-content>
+</ion-view>

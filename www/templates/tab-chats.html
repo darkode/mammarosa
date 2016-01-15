@@ -1,0 +1,33 @@
+
+<ion-view view-title='Sub Categories' cache-view="false">
+
+<ion-content class="my-menu">
+
+  <FRAMESET cols="20%, 80%">
+    <div ng-show="htmltext!='undefined'">
+       <div ng-bind-html="htmltext"></div>
+    </div>
+  </FRAMESET>
+
+
+<div ng-show="htmltext=='undefined'">
+    <ion-list>
+      <ion-item class="ionListItem item-icon-right" ng-repeat="category_item in itemsubjects | orderBy: 'ordering' " type="item-text-wrap" href="#/tab/chats/{{category_item.id}}">
+        <span class="elementCenterAlign">{{category_item.title}}</span>
+
+
+
+                            <div class="item-icon-right" ng-if="category_item.intro_text">
+                                <i class="icon app_text_icon"></i>
+                            </div>
+
+                            <div class="item-icon-right" ng-if="!category_item.intro_text">
+                                <i class="icon ion-chevron-right icon-accessory"></i>
+                            </div>
+
+      </ion-item>
+    </ion-list>
+</div>
+
+  </ion-content>
+</ion-view>

@@ -1,0 +1,293 @@
+body {
+  cursor: url('http://ionicframework.com/img/finger.png'), auto;
+}
+
+
+.scroll-content {
+  background: url(../img/background_pattern.png) repeat;
+
+  }
+
+  .app_download_icon {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('../img/icons/icon_download.png');
+  }
+
+
+    .app_downloaded_icon {
+      background-repeat: no-repeat;
+      background-position:center;
+      background-image: url('../img/icons/icon_downloaded.png');
+    }
+
+    .app_text_icon {
+      background-repeat: no-repeat;
+      background-position:center;
+      background-image: url('../img/icons/icon_text.png');
+    }
+
+
+
+  .app_refresh {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('../img/icons/icon_refresh.png');
+  }
+
+  .app_settings {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('../img/icons/icon_settings.png');
+  }
+
+  .app_website_screenshots {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('../img/icons/icon_gallery.png');
+  }
+
+  .app_about {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('../img/icons/icon_question.png');
+  }
+
+  .app_language {
+    background-repeat: no-repeat;
+    background-position:center;
+    background-image: url('../img/icons/icon_globe.png');
+  }
+
+
+  .my-custom-bar {
+  .bar-header {
+  background: #ff0000;
+  }
+  }
+
+  .button-right{
+    display: block !important;
+    width: 100% !important;
+    text-align:right !important;
+  }
+
+
+  .my-menu {
+  background-color: #3f4041;
+  }
+
+  .my-menu .item, .my-menu .item-content, .my-menu .item-complex{
+  background-color: rgba(0,0,0,0);
+  background-color: rgba(255,55,55,0);
+  color: #FFFFFF;
+  }
+
+  .centerme {
+      margin: 0 auto;
+      width: 100%;
+      height:100%;
+  }
+
+  .fullscreen-player {
+      max-width: 100%;
+      max-height: 100%;
+      bottom: 0;
+      left: 0;
+      margin: auto;
+      overflow: none;
+      position: fixed;
+      right: 0;
+      top: 0;
+  }
+
+  .video-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      padding-top: 30px; height: 0; overflow: hidden;
+  }
+
+  .video-container iframe, .video-container object, .video-container embed {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+  }
+
+
+
+  .has-tabs-top {
+    top: 70px !important; /*  height of the tabs */
+  }
+
+
+  .title-image {
+      height: 50px;
+      position: absolute;
+      top: -5px;
+      left: -5px;
+  }
+
+
+
+  /* Empty. Add your own CSS if you like */
+  .videogular-container {
+  	width: 100%;
+  	height: 320px;
+  	margin: auto;
+  	overflow: hidden;
+  }
+
+  @media (min-width: 1200px) {
+  	.videogular-container {
+  		width: 1170px;
+  		height: 658.125px;
+  	}
+  }
+
+  @media (min-width: 992px) and (max-width: 1199px) {
+  	.videogular-container {
+  		width: 940px;
+  		height: 528.75px;
+  	}
+  }
+
+  @media (min-width: 768px) and (max-width: 991px) {
+  	.videogular-container {
+  		width: 728px;
+  		height: 409.5px;
+  	}
+  }
+
+
+  img{
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+  }
+
+  .item-avatar i:first-child, .item-avatar .item-img {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      font-size: 36px;
+      max-width: 40px;
+      max-height: 40px;
+      width: 100%;
+      border-radius: 4px;
+    }
+
+    .item-checkbox-img {
+      vertical-align: middle;
+      position: absolute;
+      top: 0px;
+      right: 15px;
+      height: 100%;
+    }
+
+
+    * {
+        font-size: 14pt;
+    	}
+    body {
+        background-color: #FCD8DA;
+        font-family: "../assets/fonts/NeutraText-BookAlt",Arial,Verdana,Helvetiva,sans-serif;
+        font-size: 10pt;
+        color: #5b2b46;
+
+    }
+
+
+    a {
+        color: #dd41b9;
+        font-weight: bold;
+    }
+
+    .icon {
+    	width: 32px;
+    	height: 32px;
+    }
+
+    /* Smartphone */
+    @media only screen and (max-device-width: 480px) {
+        body { font-size: 20px; line-height: 30px; }
+    }
+
+    /* Tablet portrait*/
+    @media only screen and (max-device-width: 768px) {
+        body { font-size: 16px; line-height: 24px; }
+    }
+
+    @media only screen and (max-device-width: 1024px) {
+        body { font-size: 16px; line-height: 20px; }
+    }
+
+
+
+    .item-profile-item {
+      background-color: rgba(252,216,218,0.6) !important;
+
+      height: 70px;
+      text-color: #000 !important;
+      color: #000 !important;
+      float: left;
+      line-height: 50px;
+      width: 100%;
+
+    }
+
+
+    .item-profile-item > i {
+      text-color: #000 !important;
+      color: #000 !important;
+
+    }
+
+
+    .item-profile {
+      padding-right: 10px;
+      height: 60px;
+      text-color: #dd41b9 !important;
+      color: #dd41b9 !important;
+      float: left;
+      line-height: 50px;
+      left: 10px !important;
+
+
+      .item-thumbnail-left > img:first-child {
+        max-width: 50px;
+        max-height: 10px;
+        margin: 0px 15px 15px 10px;
+        padding: 0px 15px 15px 10px;
+      }
+    }
+
+
+.ionListItem {
+  background-color: #f08195 !important;
+  max-height: 70px;
+
+}
+
+.zmy-left-icon {
+  display: block !important;
+  float: left;
+  margin: 0px 3px 3px 2px;
+  padding: 0px 3px 3px 2px;
+  left: -100px !important;
+  background-color: #fff !important;
+}
+
+    .preWrap {
+      white-space: pre-wrap;
+    }
+
+
+    .button-positive{
+      right:70px !important;
+    }
+
+    .larger {
+        font-size: larger;
+    }

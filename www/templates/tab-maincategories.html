@@ -1,0 +1,34 @@
+
+
+<ion-view view-title='Categories'>
+
+
+<ion-content class='my-menu'>
+    <ion-list>
+      <ion-item class="item ionListItem" ng-repeat="category_item in main_category_items" type="item-text-wrap" href="#/tab/items/{{category_item.id}}">
+
+                  <div>
+
+                      <span class="elementCenterAlign">{{category_item.title}}</span>
+
+
+                    </div>
+
+
+                    <div class="item-icon-right" ng-if="category_item.asset">
+                        <i class="icon app_text_icon icon-accessory"></i>
+                    </div>
+
+                    <div class="item-icon-right" ng-if="!category_item.asset">
+                        <i class="icon ion-chevron-right icon-accessory"></i>
+                    </div>
+
+
+
+
+
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+</ion-view>
