@@ -3,9 +3,37 @@ body {
 }
 
 
-.scroll-content {
-  background: url(../img/background_pattern.png) repeat;
+@font-face {
+    font-family: 'fontawesome';
+    src: url('../fonts/NeutraText-BookAlt.eot');
+    src: url('../fonts/NeutraTextBookAlt?#iefix') format('embedded-opentype'),
+    url('../fonts/NeutraTextBookAlt.woff') format('woff'),
+    url('../fonts/NeutraText-BookAlt.ttf') format('truetype'),
+    url('../fonts/NeutraTextBookAlt.svg') format('svg');
+    font-weight: 200;
+}
+body{
+    font-family: 'fontawesome';
+}
 
+body {
+	background-color: #FCE0E1;
+	color: #333;
+}
+
+.custom-background-content {
+  background: url(../img/background_pattern.png) repeat;
+  }
+
+  .custom-background-login {
+    background: url(../img/icons/ic_launcher.png) repeat;
+    }
+
+
+.scroll-content {
+/*
+  background: url(../img/background_pattern.png) repeat;
+*/
   }
 
   .app_download_icon {
@@ -138,43 +166,13 @@ body {
       left: -5px;
   }
 
-
-
-  /* Empty. Add your own CSS if you like */
-  .videogular-container {
-  	width: 100%;
-  	height: 320px;
-  	margin: auto;
-  	overflow: hidden;
-  }
-
-  @media (min-width: 1200px) {
-  	.videogular-container {
-  		width: 1170px;
-  		height: 658.125px;
-  	}
-  }
-
-  @media (min-width: 992px) and (max-width: 1199px) {
-  	.videogular-container {
-  		width: 940px;
-  		height: 528.75px;
-  	}
-  }
-
-  @media (min-width: 768px) and (max-width: 991px) {
-  	.videogular-container {
-  		width: 728px;
-  		height: 409.5px;
-  	}
-  }
-
-
+/*
   img{
     display: block;
     max-height: 100%;
     max-width: 100%;
   }
+*/
 
   .item-avatar i:first-child, .item-avatar .item-img {
       position: absolute;
@@ -183,10 +181,11 @@ body {
       font-size: 36px;
       max-width: 40px;
       max-height: 40px;
-      width: 100%;
+      wwidth: 100%;
       border-radius: 4px;
     }
 
+/*
     .item-checkbox-img {
       vertical-align: middle;
       position: absolute;
@@ -194,15 +193,17 @@ body {
       right: 15px;
       height: 100%;
     }
+*/
+
 
 
     * {
-        font-size: 14pt;
+        font-size: 12pt;
     	}
     body {
         background-color: #FCD8DA;
         font-family: "../assets/fonts/NeutraText-BookAlt",Arial,Verdana,Helvetiva,sans-serif;
-        font-size: 14pt;
+        font-size: 12pt;
         color: #5b2b46;
 
     }
@@ -218,25 +219,10 @@ body {
     	height: 24px;
     }
 
-    /* Smartphone */
-    @media only screen and (max-device-width: 480px) {
-        body { font-size: 20px; line-height: 30px; }
-    }
 
-    /* Tablet portrait*/
-    @media only screen and (max-device-width: 768px) {
-        body { font-size: 16px; line-height: 24px; }
-    }
-
-    @media only screen and (max-device-width: 1024px) {
-        body { font-size: 16px; line-height: 20px; }
-    }
-
-
-
+/*
     .item-profile-item {
       background-color: rgba(252,216,218,0.6) !important;
-
       height: 70px;
       text-color: #000 !important;
       color: #000 !important;
@@ -270,7 +256,7 @@ body {
         padding: 0px 15px 15px 10px;
       }
     }
-
+*/
 
     .my-left-icon {
       xdisplay: block !important;
@@ -282,7 +268,7 @@ body {
       top: 0;
     }
 
-.ionListItemWhite {
+.ionListItemRadiand {
 
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+4,ffffff+7,f4356f+78 */
   background: #ffffff; /* Old browsers */
@@ -304,17 +290,310 @@ body {
   max-height: 70px;
 }
 
+
+.ionListItemWhite {
+  background-color: #fff !important;
+  max-height: 60px;
+
+}
+
+.wrapping-list .item-content, .wrapping-list .item {
+    overflow: initial;
+    white-space: initial;
+}
+
     .preWrap {
       white-space: pre-wrap;
     }
 
 
 .downloading-on {
-    display: none !important;
+    display: block !important;
 }
 
 
 
 .downloading-off {
 display: none !important;
+}
+
+
+.transparent {
+  background: transparent !important;
+}
+.image-modal {
+  width: 100% !important;
+  height: 100%;
+  top: 0 !important;
+  left: 0 !important;
+}
+.fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+.slider {
+  width: 100%;
+  height: 100%;
+}
+
+p.info {
+  position: absolute;
+  bottom: 55px;
+  margin: 0 auto;
+  width: 100%;
+  display: block;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+
+.photo {
+      /* To correctly align image, regardless of content height: */
+      vertical-align: top;
+      display: inline-block;
+      /* To horizontally center images and caption */
+      text-align: center;
+      /* The width of the container also implies margin around the images. */
+      width: device-width + 'px';
+}
+
+.slideshow_image {
+  width: device-width + 'px';
+}
+
+.image {
+   position: relative;
+   width: 100%; /* for IE 6 */
+}
+
+
+.available-scroller {
+  height: 350px;
+}
+
+.caption {
+    display: block;
+}
+
+
+.pull-right{
+  float: right;
+}
+.button-halfwidth{
+  width: 49%;
+}
+.button-fullwidth{
+  width: 100%;
+}
+
+
+
+
+.custom {
+  background-color: #f28d9f !important; /* This sets ff6682 #f08195 #5b2b46 #FCD8DA  #3f4041 the background color*/
+ }
+
+/*Set the background to transparent for ion-item*/
+.custom .item {
+  background-color: transparent;
+  border:none;   /*Removes all borders*/
+  border-top: 1px solid;   /*Top Border for each menu item*/
+  border-bottom:2px solid;   /*Bottom border for each menu item*/
+  border-color: #f4a4b2;   /*Sets colors for top and bottom border*/
+  color: white;    /*Text color for each item*/
+}
+
+/*Changes the border for the last item*/
+.custom .item:last-child {
+  border-bottom: 1px solid #f4a4b2;
+}
+
+.custom .item-complex .item-content, .dark .item-radio .item-content {
+  background-color: transparent;
+}
+
+/*Just makes the type white*/
+.custom h2,
+.custom h3,
+.custom p,
+.custom a {
+  color: white;  /*Text color for each item, overrides the color property above*/
+}
+
+
+.cc-selector-2 input{
+    position:absolute;
+    z-index:999;
+}
+
+.visa{background-image:url(http://i.imgur.com/lXzJ1eB.png);}
+.mastercard{background-image:url(http://i.imgur.com/SJbRQF7.png);}
+
+.cc-selector-2 input:active +.drinkcard-cc, .cc-selector input:active +.drinkcard-cc{opacity: .9;}
+.cc-selector-2 input:checked +.drinkcard-cc, .cc-selector input:checked +.drinkcard-cc{
+    -webkit-filter: none;
+       -moz-filter: none;
+            filter: none;
+}
+.drinkcard-cc{
+    cursor:pointer;
+    background-size:contain;
+    background-repeat:no-repeat;
+    display:inline-block;
+    width:100%;height:60px;
+    -webkit-transition: all 100ms ease-in;
+       -moz-transition: all 100ms ease-in;
+            transition: all 100ms ease-in;
+    -webkit-filter: brightness(1.8) grayscale(1) opacity(.7);
+       -moz-filter: brightness(1.8) grayscale(1) opacity(.7);
+            filter: brightness(1.8) grayscale(1) opacity(.7);
+}
+.drinkcard-cc:hover{
+    -webkit-filter: brightness(1.2) grayscale(.5) opacity(.9);
+       -moz-filter: brightness(1.2) grayscale(.5) opacity(.9);
+            filter: brightness(1.2) grayscale(.5) opacity(.9);
+}
+
+
+
+.item-checkbox-img {
+  vertical-align: middle;
+  position: absolute;
+  top: 0px;
+  right: 15px;
+  height: 100%;
+}
+
+
+.custom-thumbnail > img:first-child, .custom-thumbnail .item-image, .custom-thumbnail .item-content > img:first-child, .custom-thumbnail .item-content .item-image {
+    top: 0px !important;
+    left: 0px !important;
+    width: 120px !important;
+    height: 100px !important;
+    max-width: 120px !important;
+    max-height: 100px !important;
+
+   padding: 4px; margin: 0 7px 2px 0; display: inline;
+}
+
+.custom-thumbnail-icon > img:first-child, .custom-thumbnail-icon .item-image, .custom-thumbnail-icon .item-content > img:first-child, .custom-thumbnail-icon .item-content .item-image {
+    top: 20px !important;
+    right: 10px !important;
+    width: 32px !important;
+    height: 32px !important;
+    max-width: 32px !important;
+    max-height: 32px !important;
+}
+
+img.alignleft { float: left; margin: 0 1em 1em 0; }
+
+.item-my-text {
+  top: -30px !important;
+  left: 12px !important;
+  width: 180px !important;
+  padding: 2px;
+  margin: 0 2px 2px 0;
+  display: block;
+  border: 0;
+}
+
+.custom-icon-standard {
+  /* background-color: #FCD8DA; */
+  font-family: "../assets/fonts/NeutraText-BookAlt",Arial,Verdana,Helvetiva,sans-serif;
+  /* font-size: 12pt; */
+  color: #FCD8DA;
+  font-size: 24px;
+
+}
+
+.custom-icon-standard-white {
+    font-size: 24px;
+    color : white;
+}
+
+.item-header-height {
+
+height: 120px;
+
+}
+
+.company-logo-locate {
+  position:relative;
+  top: -40px;
+}
+
+.company-logo {
+  vertical-align: middle;
+  display: block;
+  max-width: 96%;
+  content: url(../img/icons/logo.png);
+}
+
+.company-logo-header {
+  vertical-align: middle;
+  display: block;
+  max-width: 80%;
+  content: url(../img/icons/logo.png);
+}
+
+.center-horizonaly {
+max-width: 100%;
+    vertical-align: middle;
+}
+
+.custom-color-pink-light {
+background-color: #FCD8DA;
+}
+
+.custom-text-color-pink-light {
+color: #f08195;
+border-style: none;
+background-color: transparent;
+font-weight: 700;
+font-size: 1.2em;
+}
+
+
+.custom-text-color-pink-light i {
+font-size: 24px;
+}
+
+.html-icon {
+font-size: 16px;
+}
+
+.word-wrap-text {
+  white-space: normal;
+}
+
+
+.my-show-hide-animation.ng-hide-add,
+.my-show-hide-animation.ng-hide-remove {
+  -webkit-transition:0.5s linear all;
+  transition:0.5s linear all;
+
+  /* remember to add this */
+  display:block!important;
+  opacity:1;
+}
+.my-show-hide-animation.ng-hide {
+  opacity:0;
+}
+
+
+.accordion-standard {
+  height: 40px;
+  overflow: hidden;
+}
+
+.accordion-extend {
+  height: 80%;
 }

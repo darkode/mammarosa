@@ -1,7 +1,7 @@
 <ion-view view-title="{{videotitle}}" cache-view="false" id="clip-wrapper" hide-tabs>
+<ion-nav-title style="font-size:14px">{{navTitle}}</ion-nav-title>
 
-
-  <ion-content>
+<ion-content has-header="true" padding="true" class="my-menu custom-background-content">
 
 
         <div class="card"  ng-repeat="clip in videoclips" >
@@ -17,4 +17,15 @@ video url: {{clip.videoplayerURL}} | {{videoplayerURL}}
         </div>
 
   </ion-content>
+
+
+
+    <div class="tabs tabs-icon-only">
+          <a nav-clear class="tab-item disable-user-behavior" title="Fullscreen" nav-clear ng-click="playFullscreen()">
+            <i class="icon ion-arrow-expand"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+          </a>
+
+        </div>
+
+
 </ion-view>

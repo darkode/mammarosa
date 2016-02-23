@@ -1,0 +1,119 @@
+<ion-view cache-view="false">
+<ion-nav-title style="font-size:14px">{{navTitle}}</ion-nav-title>
+
+    <ion-nav-buttons side="left">
+      <button menu-toggle="left" class="button button-icon button-clear ion-navicon"></button>
+    </ion-nav-buttons>
+
+
+    <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-earth custom-text-color-pink-light" menu-toggle="right"></button>
+    </ion-nav-buttons>
+
+
+
+<ion-content has-header="true" padding="true" class="my-menu custom-background-content">
+
+
+<div>
+
+<div ng-show="textToShow">
+  <div ng-bind-html="introtext" class="my-show-hide-animation custom-color-pink-light" ng-class="isGroupShown(1) ? 'accordion-extend' : 'accordion-standard'"></div>
+  <div class="row  custom-color-pink-light">
+    <div class="col"> </div>
+    <div class="col col-75 text-right" ng-click="toggleGroup(1)">
+
+      <br />
+      <i class="icon" ng-class="isGroupShown(1) ? 'ion-minus' : 'ion-plus'"> Lees meer</i>
+      <br />
+      <br />
+
+    </div>
+  </div>
+</div>
+
+
+
+
+<!--
+      <ion-list show-delete="shouldShowDelete"
+          show-reorder="shouldShowReorder"
+          can-swipe="listCanSwipe">
+href="#/tab/clips/{{item.video_id}}"
+            <ion-item class="ionListItem item-icon-left" ng-repeat="item in videos" >
+-->
+
+<div ng-hide="isGroupShown(1)">
+
+
+
+
+<div class="list" ng-if="ItemsVisible">
+
+  <div ng-repeat="item in videos | filter : searchText | orderBy : 'item.ordering'"
+        type="item-text-wrap"
+        class="item ionListItemWhite item-thumbnail-left custom-thumbnail item-thumbnail-right custom-thumbnail-icon">
+
+
+          <a href="#/main/clips/{{item.video_id}}" class="item-thumbnail-left custom-thumbnail">
+              <img ng-src="{{appCacheDirectory}}/{{item.thumb_md5}}.png" width="130px">
+
+            <div class="item item-body item-text-wrap item-my-text">
+
+                    <div ng-switch on="showTranslationItems" class="animate-switch-container">
+                                    <div class="animate-switch" ng-switch-when="true">
+                                    <h2>{{item.translation}}</h2>
+                                    <h4>{{item.title}}</h4>
+                                  </div>
+
+                                    <div class="animate-switch" ng-switch-default>
+                                      <h2>{{item.title}}</h2></h3>
+                                    </div>
+                    </div>
+
+            </div>
+          </a>
+
+          <span>
+
+              <span id="{{item.youtube_id}}_default" class="item-thumbnail-right custom-thumbnail-icon alignleft" ng-show="!item.downloading">
+              <img src="img/icons/cell_download.png" ng-show="!item.downloaded_date" ng-click="toggle_visibility(item)">
+              </span>
+
+              <span id="{{item.youtube_id}}_default" class="item-thumbnail-right custom-thumbnail-icon alignleft" ng-show="!item.downloading">
+              <img src="img/icons/cell_downloaded.png" ng-show="item.downloaded_date" ng-click="downloadedclip(item)">
+              </span>
+
+              <span id="{{item.youtube_id}}_loader"  class="item-thumbnail-right custom-thumbnail-icon alignleft" ng-show="item.downloading">
+              <img src="img/icons/spinner.gif">
+              </span>
+
+        </span>
+
+  </div>
+
+</div>
+
+</div>
+</div>
+
+<div ng-show="!ItemsVisible">
+Geen Data
+</div>
+
+
+</ion-content>
+
+<div ng-show="!isGroupShown(1)">
+<!-- align to the bottom of the page -->
+<br />
+<br />
+<div  style="position: absolute; bottom: 0px; width: 100%;">
+    <div style="text-align: right">
+      <button class="button icon-left ion-archive custom-color-pink-light" ng-click="showPopupArchive({{catid}})">Archief</button>
+      <br />
+    </div>
+</div>
+</div>
+
+</ion-view>

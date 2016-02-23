@@ -1,0 +1,55 @@
+<ion-view title="{{navTitle}}">
+
+        <ion-content has-header="true" padding="true" class="custom-background-content">
+
+
+<img src="img/icons/logo.png" class="centerme company-logo-header company-logo-locate">
+
+            <div class="list company-logo-locate">
+<br />
+<p>
+  Jouw mening is belangrijk. Neem een paar seconden de tijd!
+  <br />
+  <br />
+  <b>Je hebt gekeken naar: <i>{{videoclip_title}}</i></b>
+</p>
+
+<p>
+  De informatie in dit filmpje vind ik: (5) zeer informatief, (0) niet informatief.
+</p>
+
+<div class="item">
+  <div class="range range-positive">
+    <i class="icon ion-thumbsdown"></i>
+    <input type="range" name="volume" min="0" max="5" value="0" ng-model="user.value">
+    <i class="icon ion-thumbsup"></i>
+  </div>
+<p class="text-center">Uw score: {{user.value}}</p>
+</div>
+<br />
+<p>
+Suggesties? Wat ontbreekt?
+</p>
+              <label class="item item-input">
+                <textarea ng-model="user.feedback" cols="30" rows="4"></textarea>
+              </label>
+
+
+  <div class="row">
+  	<div class="col col-50">
+              <button class="button button-block custom-color-pink-light" ng-click="skipOpinion(videoclipid)">
+                Geen Mening
+              </button>
+            </div>
+
+  	<div class="col col-50">
+                <button class="button button-block button-positive" ng-click="sendOpinion(videoclipid)">
+                  Verzenden
+                </button>
+              </div>
+</div>
+
+            </div>
+
+          </ion-content>
+        </ion-view>

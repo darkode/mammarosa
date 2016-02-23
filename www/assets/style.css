@@ -1,11 +1,11 @@
 
 @font-face {
-    font-family: MyNeutraTextBookAlt;
-    src: url("file:///android_asset/fonts/NeutraTextBookAlt.otf")
+    font-family: 'Neutra Text Alt';
+    src: url("file:///android_asset/fonts/NeutraText-BookAlt.ttf")
 }
 body {
 	background-color: #FCE0E1;
-	font-family: MyNeutraTextBookAlt;
+	font-family: 'Neutra Text Alt';
 	color: #333;
 }
 
@@ -15,4 +15,9 @@ img.icon {
 }
 h1,h2,h3,h4,h5,h6 {
 	color: #fff;
+}
+
+
+.html-icon {
+font-size: 24px;
 }

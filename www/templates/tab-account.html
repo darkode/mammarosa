@@ -1,9 +1,84 @@
-<ion-view view-title="Account">
-  <ion-content>
-    <ion-list>
-    <ion-toggle  ng-model="settings.enableFriends">
-        Enable Friends
-    </ion-toggle>
-    </ion-list>
-  </ion-content>
+<ion-view view-title="{{navTitle}}">
+
+
+      <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon button-clear  ion-navicon"></button>
+      </ion-nav-buttons>
+
+
+      <ion-nav-buttons side="right">
+          <button class="button button-icon button-clear ion-earth" menu-toggle="right"></button>
+      </ion-nav-buttons>
+
+    <ion-content has-header="true" padding="true" class="custom-background-content">
+
+      <img src="img/icons/logo.png" class="centerme company-logo-header company-logo-locate">
+      <br />
+    <div class="list company-logo-locate">
+
+          <ion-toggle ng-model="settings.enableBirthyear">
+              Geboortejaar opgeven
+          </ion-toggle>
+
+          <label class="item item-input item-select" id='geboortejaar' ng-show="settings.enableBirthyear==true">
+              <div class="input-label">
+                Geboortejaar
+              </div>
+              <select ng-model="settings.Birthyear" name="settings.Birthyear">
+
+                <option ng-repeat="birthyear in yearArray" value="{{birthyear.birthyear}}" ng-selected="birthyear.selected" >{{birthyear.birthyear}}</option>
+              </select>
+            </label>
+</div>
+
+<div class="list company-logo-locate">
+<div class="item">
+          <label class="item item-input item-floating-label"> <span class="input-label">Username</span>
+              <input type="text" placeholder="Username" ng-model="settings.username">
+          </label>
+</div>
+</div>
+
+
+    <div class="list company-logo-locate">
+
+          <ion-toggle  ng-model="settings.enableMailing">
+              Enable Mailing
+          </ion-toggle>
+
+              <div class='item word-wrap-text item-text-wrap' ng-show="settings.enableMailing==true">
+
+                <p>
+                Wil je op de hoogte blijven van de activiteiten van Stichting Mammarosa, vul dan je echte naam (voornaam en achternaam) en je emailadres in.
+                <br />
+                </p>
+
+                                   <label class="item item-input item-floating-label"> <span class="input-label">Voornaam</span>
+                                         <input type="text" placeholder="Firstname" ng-model="settings.firstname">
+                                     </label>
+
+                                     <label class="item item-input item-floating-label"> <span class="input-label">Achternaam</span>
+                                         <input type="text" placeholder="Lastname" ng-model="settings.lastname">
+                                     </label>
+
+
+                                     <label class="item item-input item-floating-label"> <span class="input-label">e-mail</span>
+                                         <input type="text" placeholder="e-mail" ng-model="settings.email">
+                                     </label>
+
+            </div>
+  </div>
+
+
+  <!-- align to the bottom of the page -->
+  <div style="position: absolute; bottom: 0px; width: 100%">
+      <div style="text-align: center">
+        <button class="button icon-left ion-star button-positive" ng-click="saveAccount(settings)">Update</button>
+
+      </div>
+  </div>
+
+
+</ion-content>
+
 </ion-view>

@@ -1,23 +1,51 @@
 <ion-view view-title="Languages">
-  <ion-content>
 
-    <div class="item item-divider">
-      Clientside, Selected Value: {{ data.serverSide }}
-    </div>
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+  <ion-content has-header="true" padding="true" class="custom-background-content">
 
 
-      <ion-radio name='language' class="item-avatar" item="language"
-                  ng-repeat="language in languages"
-                  ng-value="language.id"
-                  ng-model="data.serverSide"
-                  ng-change="serverSideChange(language)"
-                  ng-cclick="clicker(language)">
+<ul>
 
-        <img ng-src="{{appCacheDirectory}}{{language.thumb_md5}}.png">
-        <h2>{{language.source_name}}</h2>
-        <p>{{language.name}}</p>
+  <li class="item item-avatar-right item-checkbox"  ng-repeat="language in languages  | filter : searchText | orderBy : 'language.ordering'">
 
-       </ion-radio>
+      <img src="{{appCacheDirectorya}}{{language.thumb_md5}}.png">
+      <label class="checkbox">
+          <input type="radio" name='language'  item="language"
+                       ng-value="language.id"
+                        ng-model="data.serverSide"
+                        ng-change="serverSideChange(language)"
+                        ng-click="clicker(language)">
+      </label>
+      <h2>{{language.source_name}}</h2>
+      <p>{{language.name}}</p>
+  </li>
+</ul>
+
+
+<br /><br /><br />
 
   </ion-content>
+
+
+  <div class="tabs tabs-icon-only">
+        <a nav-clear class="tab-item disable-user-behavior" title="Home" nav-clear ui-sref="main.home">
+          <i class="icon app_about"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+        <a nav-clear class="tab-item disable-user-behavior active" title="Gallery" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.gallery">
+          <i class="icon app_website_screenshots"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+
+        <a nav-clear class="tab-item disable-user-behavior active" title="Account" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.account">
+          <i class="icon app_settings"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+
+        <a nav-clear class="tab-item disable-user-behavior" title="Languages" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.languages">
+          <i class="icon app_language"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+      </div>
+
+
 </ion-view>

@@ -1,17 +1,21 @@
+<ion-view>
+<ion-nav-title style="font-size:14px">{{navTitle}}</ion-nav-title>
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon button-clear ion-navicon"></button>
+  </ion-nav-buttons>
 
 
-<ion-view view-title='Categories'>
+  <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-earth custom-text-color-pink-light" menu-toggle="right"></button>
+  </ion-nav-buttons>
 
-
-<ion-content class='my-menu'>
+<ion-content has-header="true" padding="true" class="my-menu custom-background-content">
     <ion-list>
-      <ion-item class="item ionListItem" ng-repeat="category_item in main_category_items" type="item-text-wrap" href="#/tab/items/{{category_item.id}}">
+      <ion-item class="item ionListItem" ng-repeat="category_item in main_category_items" type="item-text-wrap" href="#/main/items/{{category_item.id}}">
 
-                  <div>
-
-                      <span class="elementCenterAlign">{{category_item.title}}</span>
-
-
+                    <div>
+                        <span class="elementCenterAlign">{{category_item.title}}</span>
                     </div>
 
 
@@ -23,12 +27,10 @@
                         <i class="icon ion-chevron-right icon-accessory"></i>
                     </div>
 
-
-
-
-
       </ion-item>
     </ion-list>
 
   </ion-content>
+
+
 </ion-view>
