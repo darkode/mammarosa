@@ -14,6 +14,7 @@ angular.module('starter.controllers', ['ngCordova', 'ngCordova.plugins.file'] )
 //      $('#ionHideTabs').attr('ng-show',false);
 //    var tabs = document.querySelectorAll('div.tabs');
 
+<<<<<<< HEAD
 //  console.log('TABS: ');
 //  console.log(angular.element(tabs[0]) );
 //  console.log( tabs[0] );
@@ -22,11 +23,122 @@ angular.module('starter.controllers', ['ngCordova', 'ngCordova.plugins.file'] )
 
     if(window.orientation == -90 || window.orientation == 90) {
       // $('.portrait-mode').hide();
+=======
+})
+
+.controller('GalleryCtrl', function($scope, $http, $ionicPlatform, $cordovaSQLite, $cordovaFile, $ionicSlideBoxDelegate,$ionicSideMenuDelegate) {
+
+  window.addEventListener("orientationchange", orientationChange, true);
+
+  function orientationChange(e) {
+      var orientation="portrait";
+  //    $('.portrait-mode').show();
+//      $('#ionHideTabs').attr('ng-show',false);
+//    var tabs = document.querySelectorAll('div.tabs');
+
+//  console.log('TABS: ');
+//  console.log(angular.element(tabs[0]) );
+//  console.log( tabs[0] );
+
+    //  angular.element(tabs[0]).css('display', '');
+
+
+
+
+    if(window.orientation == -90 || window.orientation == 90) {
+      // $('.portrait-mode').hide();
 
   //    document.querySelector('div.tabs').style.display = 'none';
   //    angular.element(document.querySelector('ion-content.has-tabs')).css('bottom', 0);
 
 
+// ionic.Platform.fullScreen(true, false);
+
+      orientation = "landscape";
+
+$scope.hideNavBar = true;
+
+    } else {
+
+console.log('in portait again?');
+
+$scope.hideNavBar = false;
+
+
+    }
+
+      console.log('Orientation: ' + orientation);
+
+
+
+
+}
+
+
+
+  function b64toBlob(b64Data, contentType, sliceSize) {
+      contentType = contentType || '';
+      sliceSize = sliceSize || 512;
+
+      var byteCharacters = atob(b64Data);
+      var byteArrays = [];
+
+      for (var offset = 0; offset < byteCharacters.length; offset += sliceSize) {
+          var slice = byteCharacters.slice(offset, offset + sliceSize);
+
+          var byteNumbers = new Array(slice.length);
+          for (var i = 0; i < slice.length; i++) {
+              byteNumbers[i] = slice.charCodeAt(i);
+          }
+
+          var byteArray = new Uint8Array(byteNumbers);
+
+          byteArrays.push(byteArray);
+      }
+
+      var blob = new Blob(byteArrays, {type: contentType});
+      return blob;
+  };
+
+  // Call this functions if you need to manually control the slides
+      $scope.next = function() {
+        $ionicSlideBoxDelegate.next();
+      };
+
+      $scope.previous = function() {
+        $ionicSlideBoxDelegate.previous();
+      };
+
+    	$scope.goToSlide = function(index) {
+        $scope.modal.show();
+        $ionicSlideBoxDelegate.slide(index);
+      }
+
+      // Called each time the slide changes
+      $scope.slideChanged = function(index) {
+        $scope.slideIndex = index;
+      };
+
+
+  $scope.slideshow_images = [];
+
+
+  $scope.appCacheDirectory = fileTransferDir + 'cache/';
+
+//   console.log('localStorage set, loading category_items');
+//  $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
+// $scope.slideshow_images = $scope.jsondata.slideshow_images;
+
+
+$scope.itemsVisible = true;
+$scope.noItemsVisible = false;
+>>>>>>> origin/master
+
+  //    document.querySelector('div.tabs').style.display = 'none';
+  //    angular.element(document.querySelector('ion-content.has-tabs')).css('bottom', 0);
+
+
+<<<<<<< HEAD
 // ionic.Platform.fullScreen(true, false);
 
       orientation = "landscape";
@@ -138,6 +250,36 @@ var data = res.rows.item(i).blob;
               var blobUrl = URL.createObjectURL(blob);
 
 
+=======
+
+
+var query = "SELECT * FROM slideshow_images";
+// alert('2 :' +query);
+$cordovaSQLite.execute(db, query)
+.then(function(res){
+    //  alert('2e : '+res.rows.length );
+          if(res.rows.length >0){
+        //      console.log( res );
+              for(var i = 0; i < res.rows.length; i++){
+
+var row = res.rows.item(i);
+
+
+                //  console.log( row );
+                //console.log( res.rows.item(i)  );
+var image_md5 = res.rows.item(i).image_md5;
+              //    res.rows.item(i).image_md5 = '31b47c34f9ad2fc527b638d8ef67fd86';
+
+var data = res.rows.item(i).blob;
+// console.log(data);
+
+
+              var contentType = 'image/png';
+              var blob = b64toBlob(data, contentType);
+              var blobUrl = URL.createObjectURL(blob);
+
+
+>>>>>>> origin/master
             //  $("#image"+image_md5).src = imageUrl;
 
 row.blob = blobUrl;
@@ -214,14 +356,25 @@ $scope.EntryPageVisible = true;
   return $scope.EntryPageVisible;
                 });
 })
+<<<<<<< HEAD
+=======
 
 
 .controller('ChatsCtrl', function($scope,$cordovaSQLite,$ionicSideMenuDelegate) {
+>>>>>>> origin/master
 
 //  console.log('localStorage set, loading category_items');
 //  $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
 
+.controller('ChatsCtrl', function($scope,$cordovaSQLite,$ionicSideMenuDelegate) {
 
+<<<<<<< HEAD
+//  console.log('localStorage set, loading category_items');
+//  $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
+
+
+=======
+>>>>>>> origin/master
 alert('ChatsCtrl');
 
  $scope.chats = $scope.jsondata.category_items;
@@ -291,6 +444,7 @@ $scope.jsonconfig_language = 2;
       }
   }];
 
+<<<<<<< HEAD
 
   $ionicPlatform.ready(function() {
 
@@ -319,6 +473,36 @@ $scope.jsonconfig_language = 2;
       }
 
 
+=======
+
+  $ionicPlatform.ready(function() {
+
+
+
+  $scope.insert = function(firstname, lastname) {
+          var query = "INSERT INTO people (firstname, lastname) VALUES (?,?)";
+          $cordovaSQLite.execute(db, query, [firstname, lastname]).then(function(res) {
+              console.log("INSERT ID -> " + res.insertId);
+          }, function (err) {
+              console.error(err);
+          });
+      }
+
+      $scope.select = function(lastname) {
+          var query = "SELECT firstname, lastname FROM people WHERE lastname = ?";
+          $cordovaSQLite.execute(db, query, [lastname]).then(function(res) {
+              if(res.rows.length > 0) {
+                  console.log("SELECTED -> " + res.rows.item(0).firstname + " " + res.rows.item(0).lastname);
+              } else {
+                  console.log("No results found");
+              }
+          }, function (err) {
+              console.error(err);
+          });
+      }
+
+
+>>>>>>> origin/master
 
           //    console.log('MainCategoryCtrl localStorage set, loading category_items');
         //      $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
@@ -449,6 +633,7 @@ $ionicNavBarDelegate.title($scope.navTitle);
 var data = [];
 var res =[];
 $scope.category_items = [];
+<<<<<<< HEAD
 
 var jsonconfig_language = window.localStorage['config_language'] || '2';
 
@@ -466,8 +651,82 @@ $scope.itemsVisible = false;
 
 // alert(query);
 $scope.category_items = [];
+=======
+
+var jsonconfig_language = window.localStorage['config_language'] || '2';
+
+/*
+
+var query = "SELECT * FROM category_items AS C LEFT OUTER JOIN item_translations AS T ON C.id = T.source_id WHERE C.parent_id='"+ $stateParams.catid +"'";
+*/
+
+/*
+var query = "SELECT * FROM item_translations AS T INNER JOIN category_items AS C ON C.id = T.source_id WHERE C.parent_id='"+ $stateParams.catid  +"'";
+*/
+
+$scope.noItemsVisible = false;
+$scope.itemsVisible = false;
+>>>>>>> origin/master
+
+// alert(query);
+$scope.category_items = [];
 
 
+<<<<<<< HEAD
+var query = "SELECT * FROM category_items AS C  LEFT OUTER JOIN item_translations AS T ON C.id = T.source_id WHERE C.parent_id='"+ $stateParams.catid  +"' AND T.locale_id='"+ jsonconfig_language+"'";
+
+$cordovaSQLite.execute(db, query)
+.then(function(res){
+// alert(res.rows.length );
+if(res.rows.length >0) {
+
+        for(var i = 0; i < res.rows.length; i++){
+          // alert( JSON.stringify(res.rows.item(i)) );
+          $scope.category_items.push( res.rows.item(i) );
+          // Make sure to apply scope change so that ng-repeat updates
+        }
+        $scope.itemsVisible = true;
+} else {
+
+//alert('jsonconfig_language : '+ jsonconfig_language );
+if (jsonconfig_language == 2) {
+          var query = "SELECT * FROM category_items WHERE parent_id='"+ $stateParams.catid + "'";
+//          alert('2 :' +query);
+          $cordovaSQLite.execute(db, query)
+          .then(function(res){
+  //              alert('2e : '+res.rows.length );
+                    if(res.rows.length >0){
+
+                        for(var i = 0; i < res.rows.length; i++){
+                        // alert( JSON.stringify(res.rows.item(i)) );
+                        $scope.category_items.push( res.rows.item(i) );
+                        // Make sure to apply scope change so that ng-repeat updates
+                                }
+                        $scope.itemsVisible = true;
+                } else {
+
+
+                //  alert('Niks gevonden')
+
+  $scope.itemsVisible = true;
+                  var query = "SELECT * FROM main_category_items WHERE id='"+ $stateParams.catid + "'";
+                  //          alert('2 :' +query);
+                  $cordovaSQLite.execute(db, query)
+                  .then(function(res){
+                  //              alert('2e : '+res.rows.length );
+                            if(res.rows.length >0){
+
+                              for(var i = 0; i < res.rows.length; i++){
+                          // alert( JSON.stringify(res.rows.item(i)) );
+                             $scope.category_items.push( res.rows.item(i) );
+                                // Make sure to apply scope change so that ng-repeat updates
+                                        }
+                        //        $scope.itemsVisible = true;
+
+
+
+
+=======
 
 var query = "SELECT * FROM category_items AS C  LEFT OUTER JOIN item_translations AS T ON C.id = T.source_id WHERE C.parent_id='"+ $stateParams.catid  +"' AND T.locale_id='"+ jsonconfig_language+"'";
 
@@ -522,6 +781,7 @@ if (jsonconfig_language == 2) {
 
 
 
+>>>>>>> origin/master
                         console.log('Data yes :' );
                         console.log($scope.category_items );
                         // alert($scope.category_items[0].asset);
@@ -572,6 +832,13 @@ if (jsonconfig_language == 2) {
           });
 } else{
                   $scope.noItemsVisible = true;
+<<<<<<< HEAD
+=======
+}
+          // alert( JSON.stringify(res) );
+          console.log("####console######## NO results found #######"+"Table record #: ");
+
+>>>>>>> origin/master
 }
           // alert( JSON.stringify(res) );
           console.log("####console######## NO results found #######"+"Table record #: ");
@@ -591,8 +858,26 @@ console.log("Error 1 " + JSON.stringify(err));
 
 
 
+<<<<<<< HEAD
 // $scope.htmltext = 'undefined';
 
+=======
+},
+function(err){
+console.log("Error 1 " + JSON.stringify(err));
+})
+
+
+
+
+// alert('CategoryCtrl');
+
+
+
+
+// $scope.htmltext = 'undefined';
+
+>>>>>>> origin/master
 
 /*
 var itemsubjects = [];
@@ -775,7 +1060,11 @@ console.log('scoep languages : ' , $scope.languages);
 
       $scope.settings = res.rows.item(0);
 
+<<<<<<< HEAD
       console.log('********** SERVICE loaded values:');
+=======
+      console.log('SERVICE loaded values:');
+>>>>>>> origin/master
       console.log($scope.settings);
 
       //  $timeout(function() {
@@ -798,6 +1087,137 @@ console.log('scoep languages : ' , $scope.languages);
       var enableMailing = false;
       }
 
+<<<<<<< HEAD
+=======
+
+      var date = new Date();
+      $scope.current = date.getFullYear();
+
+
+      if (res.rows.item(0).Birthyear == null) {
+      var Birthyear = $scope.current ;
+      } else {
+      var Birthyear =res.rows.item(0).Birthyear;
+      }
+
+
+      var start = 1900;  // Minus 10 years from current year
+      var end = $scope.current;  // Plus 10 years to current year
+      $scope.yearArray = [];
+
+
+      console.log('Seaching for :' + Birthyear);
+      for(var i=start;i<=end;i++)
+      {
+      if (i == Birthyear) {
+      var selectedBirthyear = 'selected';
+      console.log('selected year is : '+ i)
+      } else {
+      var selectedBirthyear = '';
+      }
+
+      $scope.yearArray.push({birthyear: i, selected: selectedBirthyear});
+      }
+
+      console.log($scope.yearArray);
+
+
+      $scope.settings = {
+       enableBirthyear: enableBirthyear,
+       enableMailing: enableMailing,
+       Birthyear: Birthyear,
+       firstname: res.rows.item(0).firstname,
+       lastname: res.rows.item(0).lastname,
+       username: res.rows.item(0).username,
+       email: res.rows.item(0).email,
+       locale_id: res.rows.item(0).lang,
+      };
+
+
+      window.localStorage['config_language'] = res.rows.item(0).lang;
+
+      console.log($scope.settings);
+
+      //    }, 1000);
+
+                // Make sure to apply scope change so that ng-repeat updates
+             // }
+
+           } else {
+
+      console.log('GEEN ACCOUNT INSTELLINGEN');
+
+                 $scope.settings = {
+                   enableBirthyear: false,
+                   enableMailing: false,
+                 };
+           }
+
+      //     dfd.resolve({
+      //       data: $scope.settings
+      //     })
+
+      }, function (err) {
+
+          console.error(err);
+
+      });
+
+
+
+
+    });
+
+
+
+
+
+    //  $state.go($state.current, {}, {reload: true});
+      // $ionicTabsDelegate.select(0);
+
+
+
+$ionicHistory.clearCache();
+// $ionicHistory.clearHistory();
+      var current = $state.current;
+
+      /*
+             var params = angular.copy($stateParams);
+             $state.transitionTo(current, params, { reload: true, inherit: true, notify: true });
+      */
+$state.go(current, {}, { reload: true });
+$scope.$on('$ionicView.enter', function(e) {
+    $ionicNavBarDelegate.showBar(true);
+});
+
+      $timeout(function() {
+$scope.toggleRight();
+
+     }, 1000);
+
+
+
+
+  };
+})
+
+
+.controller('HomeCtrl',
+		["$sce","$scope", function ($sce, $scope) {
+
+/*
+      var controller = this;
+			controller.API = null;
+
+			controller.onPlayerReady = function(API) {
+				controller.API = API;
+			};
+*/
+
+var movieclip = $scope.videoURL;
+
+ // alert( 'url : ' + $scope.youtubeID);
+>>>>>>> origin/master
 
       var date = new Date();
       $scope.current = date.getFullYear();
@@ -1351,6 +1771,7 @@ $scope.catid= $stateParams.catid;
 FeedbackService.getUser($scope,$timeout,'1').then(function(users){
 
 $scope.settings = users.data;
+<<<<<<< HEAD
 console.log('USERS : ', JSON.stringify($scope.settings) );
 
 console.log('*** CAT ID *** : ' + $scope.catid);
@@ -1360,8 +1781,20 @@ $scope.statusDownloads = function (item) {
 
   return 1;
 }
+=======
+console.log('USERS : ', $scope.settings);
 
 
+console.log('*** CAT ID *** : ' + $scope.catid);
+
+
+$scope.statusDownloads = function (item) {
+>>>>>>> origin/master
+
+  return 1;
+}
+
+<<<<<<< HEAD
 $scope.leftButtons = [{
     type: 'button-icon icon ion-navicon',
     tap: function(e) {
@@ -1374,8 +1807,23 @@ $cordovaSQLite.execute(db, "SELECT * FROM category_items WHERE category_items.id
 .then(function(res){
 
 var result = [];
+=======
+
+$scope.leftButtons = [{
+    type: 'button-icon icon ion-navicon',
+    tap: function(e) {
+        $scope.toggleMenu();
+    }
+}];
 
 
+$cordovaSQLite.execute(db, "SELECT * FROM category_items WHERE category_items.id='"+ $stateParams.catid+"'")
+.then(function(res){
+>>>>>>> origin/master
+
+var result = [];
+
+<<<<<<< HEAD
 $scope.catid = $stateParams.catid;
 // alert('Page 2 : '+ $scope.catid );
 
@@ -1395,9 +1843,31 @@ $ionicNavBarDelegate.title(title);
 
 var introtext = result[0].full_text
 $scope.introtext = introtext;
+=======
+
+$scope.catid = $stateParams.catid;
+// alert('Page 2 : '+ $scope.catid );
+
+  console.log($stateParams.catid);
+
+// alert(res.rows.length);
+if(res.rows.length >0){
+
+for(var i = 0; i < res.rows.length; i++){
+ console.log( JSON.stringify(res.rows.item(i)) );
+result.push( res.rows.item(i) );
+}
+
+$scope.navTitle = result[0].title;
+var title = result[0].title;
+$ionicNavBarDelegate.title(title);
+>>>>>>> origin/master
+
+var introtext = result[0].full_text
+$scope.introtext = introtext;
 
 
-
+<<<<<<< HEAD
 console.log('lengte intro text : ' +  introtext.length );
 if ( introtext.length >= 10) {
   $scope.textToShow = true;
@@ -1414,8 +1884,27 @@ var toggleGroup = [];
    * else, select the given group
    */
   $scope.toggleGroup = function(group) {
+=======
+
+console.log('lengte intro text : ' +  introtext.length );
+if ( introtext.length >= 10) {
+  $scope.textToShow = true;
+} else {
+  $scope.textToShow = false;
+}
 
 
+console.log(title);
+>>>>>>> origin/master
+
+var toggleGroup = [];
+/*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
+  $scope.toggleGroup = function(group) {
+
+<<<<<<< HEAD
     if (toggleGroup[group] == false) {
       toggleGroup[group] = true;
     } else {
@@ -1441,30 +1930,76 @@ var introtext = $scope.introtext ;
 var re='/href/g';
 var replace_text = 'onClick="javascript:return openExternal(this)" href';
 $scope.introtext = introtext.replace(/href/g, replace_text);
+=======
 
+    if (toggleGroup[group] == false) {
+      toggleGroup[group] = true;
+    } else {
+      toggleGroup[group] = false;
+    }
+
+    console.log('toggle : ' + group + '  $scope.shownGroup(group) :' + toggleGroup[group] );
+
+if (toggleGroup[group] == false) {
+
+$ionicScrollDelegate.scrollTop();
+
+}
+
+  };
+  $scope.isGroupShown = function(group) {
+
+    return toggleGroup[group];
+  };
+
+>>>>>>> origin/master
+
+var introtext = $scope.introtext ;
+var re='/href/g';
+var replace_text = 'onClick="javascript:return openExternal(this)" href';
+$scope.introtext = introtext.replace(/href/g, replace_text);
 
 
 
 
 console.log($scope.navTitle);
 
+<<<<<<< HEAD
 console.log('NEW intero text');
 console.log( $scope.introtext );
 
 var htmlfulltext = false;
 
+=======
+console.log($scope.navTitle);
+
+console.log('NEW intero text');
+console.log( $scope.introtext );
+
+var htmlfulltext = false;
+>>>>>>> origin/master
 
 }
 else{
 console.log("####console######## NO results found #######"+"Table record #: ");
 
+<<<<<<< HEAD
 console.error('ZOEK NAAR FULL TEXT');
 
 var htmlfulltext = true;
+=======
+}
+else{
+console.log("####console######## NO results found #######"+"Table record #: ");
 
+console.error('ZOEK NAAR FULL TEXT');
+>>>>>>> origin/master
+
+var htmlfulltext = true;
 
 }
 
+<<<<<<< HEAD
 },
 function(err){
 console.log("Error" + JSON.stringify(err));
@@ -1510,8 +2045,56 @@ videos.length = 0;
 
  // alert('1e : ' + res.rows.length );
 if(res.rows.length >0) {
+=======
+}
+
+},
+function(err){
+console.log("Error" + JSON.stringify(err));
+})
 
 
+var data = [];
+var res =[];
+$scope.videos = [];
+
+var jsonconfig_language = users.data.locale_id;
+
+$scope.jsonconfig_language = jsonconfig_language;
+
+/*
+
+var query = "SELECT * FROM category_items AS C LEFT OUTER JOIN item_translations AS T ON C.id = T.source_id WHERE C.parent_id='"+ $stateParams.catid +"'";
+*/
+
+/*
+var query = "SELECT * FROM item_translations AS T INNER JOIN category_items AS C ON C.id = T.source_id WHERE C.parent_id='"+ $stateParams.catid  +"'";
+*/
+
+$scope.noItemsVisible = false;
+$scope.itemsVisible = false;
+
+// alert(query);
+$scope.videos = [];
+
+
+
+var query = "SELECT * FROM video_items AS C  LEFT OUTER JOIN item_translations AS T ON C.id = T.source_id WHERE C.video_id='"+ $stateParams.catid  +"' AND T.locale_id='"+ jsonconfig_language+"'";
+
+// var query = "SELECT * FROM video_items AS C  LEFT JOIN item_translations AS T ON C.id = T.source_id  AND T.locale_id='"+ jsonconfig_language+"' LEFT JOIN video_translations AS V ON C.video_id=V.source_id WHERE C.video_id='"+ $stateParams.catid  +"'  AND V.locale_id='"+ jsonconfig_language+"'";
+
+var query= "SELECT video_items.id,video_items.category_id, video_items.nid,video_items.ordering,video_items.title,item_translations.translation, video_translations.locale_id, video_items.video_id,video_translations.locale_id,video_translations.last_upload_date,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res,video_translations.youtube_id as VT_youtube_id,video_extra_data.downloaded_date,video_extra_data.downloading,videos.thumb_md5,videos.thumb_url, videos.url,videos.url_low_res,videos.youtube_id FROM video_items LEFT JOIN videos ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+ jsonconfig_language+"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+ jsonconfig_language+"'  LEFT JOIN video_extra_data ON video_extra_data.video_id=video_items.video_id AND video_extra_data.locale_id='"+ jsonconfig_language+"' WHERE category_id='"+ $stateParams.catid  +"';";
+
+$cordovaSQLite.execute(db, query)
+.then(function(res){
+ // alert('1e : ' + res.rows.length );
+if(res.rows.length >0) {
+
+>>>>>>> origin/master
+
+  $scope.itemsVisible = true;
+
+<<<<<<< HEAD
   $scope.itemsVisible = true;
 
   if (res.rows.item(0).locale_id == null) {
@@ -1665,6 +2248,370 @@ console.log("Error 1 " + JSON.stringify(err));
 .then(function(res){
 $scope.ItemsVisible = true;
 console.log('?**** res ', JSON.stringify(res) );
+
+});
+
+
+var query = "SELECT * FROM video_items AS C  LEFT OUTER JOIN item_translations AS T ON C.id = T.source_id WHERE C.video_id='"+ $stateParams.catid  +"' AND T.locale_id='"+ jsonconfig_language+"'";
+$cordovaSQLite.execute(db, query)
+.then(function(res){
+//  alert('alternatieve : ' + res.rows.length );
+if(res.rows.length >0) {
+        for(var i = 0; i < res.rows.length; i++){
+      //  alert( JSON.stringify(res.rows.item(i)) );
+          $scope.category_items.push( res.rows.item(i) );
+          // Make sure to apply scope change so that ng-repeat updates
+        }
+        $scope.itemsVisible = true;
+}
+
+
+},
+function(err){
+console.log("Error 2 " + JSON.stringify(err));
+})
+
+});
+
+})
+.controller('aChatDetailCtrl', function($q, $scope, $state, $timeout,callServiceFunction, FileService, $cordovaFile, $stateParams, $ionicSideMenuDelegate) {
+
+  // $scope.appCacheDirectory = cordova.file.externalApplicationStorageDirectory + 'cache/';
+$scope.appCacheDirectory = fileTransferDir + 'cache/';
+
+
+// Video afspelen !!!!
+var   promiseWrapper = [];
+
+  var videos = [];
+  var categoryitems = [];
+//  alert('Page 2 : '+ $stateParams.catid);
+
+$scope.catid = $stateParams.catid;
+// alert('Page 2 : '+ $scope.catid );
+
+  console.log($stateParams.catid);
+
+//  $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
+//  $scope.chats = $scope.jsondata.video_items;
+//  $scope.videoclips = $scope.jsondata.videos;
+//  $scope.categoryitems = $scope.jsondata.category_items;
+//  $scope.item_translations = $scope.jsondata.item_translations;
+//  $scope.video_translations = $scope.jsondata.video_translations;
+//  console.log( $scope.categoryitems);
+
+//   for (var i = 0; i <   $scope.categoryitems.length; i++) {
+//     if (  $scope.categoryitems[i].parent_id === parseInt($stateParams.catid)) {
+//  console.log(  $scope.videoclips );
+
+
+//  var json = '{"glossary":{"title":"example glossary","GlossDiv":{"title":"S","GlossList":{"GlossEntry":{"ID":"SGML","SortAs":"SGML","GlossTerm":"Standard Generalized Markup Language","Acronym":"SGML","Abbrev":"ISO 8879:1986","GlossDef":{"para":"A meta-markup language, used to create markup languages such as DocBook.","ID":"44","str":"SGML","GlossSeeAlso":["GML","XML"]},"GlossSee":"markup"}}}}}';
+
+var catid = parseInt($stateParams.catid);
+
+// var subcategory_data = getObjects($scope.categoryitems,'id',catid);
+
+$scope.videotitle = subcategory_data[0].title;
+console.log(subcategory_data);
+
+
+//  var js =   $scope.categoryitems;
+//  var category_data = getObjects(js,'id',parseInt($stateParams.catid));
+
+  //example of grabbing objects that match some key and value in JSON
+//  console.log('getObjects category_data! : ' + JSON.stringify(category_data)  );
+  //returns 1 object where a key names ID has the value SGML
+//  console.log('getObjects chats! : ' + JSON.stringify( //getObjects($scope.chats,'category_id',parseInt($stateParams.catid)) )  );
+
+  // $scope.videos = getObjects($scope.chats,'category_id',parseInt($stateParams.catid) );
+//   $scope.video_translations = $scope.jsondata.video_translations;
+
+
+
+
+ console.log('------>>> trANSLATIONS JSON');
+ console.log($scope.video_translations);
+console.log('Video trans data:');
+console.log(video_data);
+
+  var extra = '';
+
+  for (var i = 0; i <    $scope.videos.length; i++) {
+    var extra = getObjects($scope.videoclips,'id',parseInt( $scope.videos[i].video_id));
+      console.log('ChatDetailCtrl extra : ');
+      console.log( extra );
+
+       $scope.videos[i].downloaded = false;
+
+      var language_data = getObjects($scope.item_translations,'source_id',  $scope.videos[i].id);
+      var jsonconfig_language = window.localStorage['config_language'] || '2';
+      var item_translations = getObjects(language_data,'locale_id',jsonconfig_language);
+
+
+console.log('source_id: ' + extra[0].id);
+
+      var video_data = getObjects($scope.video_translations,'source_id',extra[0].id);
+      var video_translations = getObjects(video_data,'locale_id',jsonconfig_language);
+
+      console.log('video_translations data:');
+      console.log(video_translations);
+
+  console.log('Category Items: ' + i + ' = ' + jsonconfig_language + ' == ' + $scope.videoclips[i].id);
+console.log(video_translations.length);
+if (video_translations.length > 0) {
+
+    if(video_translations[0].hasOwnProperty('youtube_id')){
+
+        console.log('*** video_translations has youtube_id ***');
+
+        console.log (video_translations[0].youtube_id);
+          if (video_translations[0].youtube_id != '') {
+            $scope.videos[i].youtube_id = video_translations[0].youtube_id;
+        }
+    }
+}   else {
+
+console.log('*** SET YOUTUBE ID FROM EXTRA');
+$scope.videos[i].downloading = false;
+    $scope.videos[i].youtube_id = extra[0].youtube_id;
+}
+
+window.localStorage.removeItem($scope.videos[i].youtube_id);
+
+
+    console.log('Category Items: ' + i + ' = ' + jsonconfig_language + ' == ' +  $scope.videos[i].parent_id);
+    console.log(item_translations.length);
+    if (item_translations.length > 0) {
+
+    if(item_translations[0].hasOwnProperty('translation')){
+    console.log (item_translations[0].translation);
+     $scope.videos[i].title = item_translations[0].translation;
+    }
+    }
+
+    var DownloadUrl = extra[0].url_low_res;
+    console.log('checkFile url: ' + DownloadUrl);
+    // var DownloadFilename = DownloadUrl.substring(DownloadUrl.lastIndexOf('/')+1);
+  //  var DownloadFilename = extra[0].youtube_id + '.mp4';
+var DownloadFilename = $scope.videos[i].youtube_id + '.mp4';
+
+
+    console.log('checkFile file : ' + DownloadFilename);
+    var url = DownloadUrl;
+    var targetPath = cordova.file.externalDataDirectory;
+
+
+     $scope.videos[i].videoItemNr = i;
+    $scope.checkThisvideo = [{'scope': $scope.videos[i] , 'arraynr':i , 'downloadurl': DownloadUrl, 'targetpath':targetPath, 'downloadfilename': DownloadFilename}];
+
+
+promiseWrapper.push( $scope.checkThisvideo );
+
+
+
+
+
+       $scope.videos[i].thumb_md5 = extra[0].thumb_md5;
+      console.log('ChatDetailCtrl: ' +  JSON.stringify(videos[i]) );
+      //  videos.push( $scope.chats[i] );
+  } // for
+
+/*
+  for (var i = 0; i <   $scope.chats.length; i++) {
+    if (  $scope.chats[i].category_id === parseInt($stateParams.catid)) {
+
+      for (var ii = 0; ii <   $scope.videoclips.length; ii++) {
+
+console.log('ChatDetailCtrl video: ' + ii + ' - ' + $scope.videoclips[ii]);
+
+        if (  $scope.chats[i].video_id === $scope.videoclips[ii].id) {
+              // here add to array
+
+              $scope.chats[i].thumb_url = $scope.videoclips[ii].thumb_url;
+        } // if
+
+      } // for
+
+      console.log('ChatDetailCtrl: ' + $scope.chats[i]);
+
+    videos.push( $scope.chats[i] );
+
+
+    } // if
+  } // for
+
+*/
+  $scope.introtext = category_data[0].intro_text;
+
+
+// deferred
+
+
+$scope.promiseWrapper = promiseWrapper;
+
+$scope.downloaded = [];
+
+
+var allPromise = $q.all([
+                        callServiceFunction.doIt($scope,$cordovaFile)
+                      ]).then(function doRegistrationCall(success) {
+                        console.log('doRegistrationCall :' + success[0].length );
+                        console.log(success);
+
+
+      for (var i = 0; i < success[0].length; i++) {
+
+console.log( i + " - " + success[0][i][0].downloadfilename );
+
+
+var dir = cordova.file.externalDataDirectory;
+var file = success[0][i][0].downloadfilename;
+
+var trustHosts = true;
+var options = {};
+=======
+  if (res.rows.item(0).locale_id == null) {
+
+  $scope.showTranslationItems = false;
+
+  } else {
+
+  $scope.showTranslationItems = true;
+
+  }
+
+
+>>>>>>> origin/master
+
+
+        for(var i = 0; i < res.rows.length; i++){
+console.log('?====> ' + JSON.stringify(res.rows.item(i)) );
+
+
+if (res.rows.item(i).VT_url != null) {
+var url = res.rows.item(i).VT_url;
+var url_low_res = res.rows.item(i).VT_url_low_res;
+var youtube_id = res.rows.item(i).VT_youtube_id;
+} else {
+var url = res.rows.item(i).url;
+var url_low_res = res.rows.item(i).url_low_res;
+var youtube_id =  res.rows.item(i).youtube_id;
+
+}
+
+if (res.rows.item(i).downloaded_date) {
+    $scope.statusDownload[youtube_id] = 2;
+  } else {
+    $scope.statusDownload[youtube_id] = 1;
+}
+
+if (res.rows.item(i).downloading == 1) {
+    $scope.statusDownload[youtube_id] = 9;
+  }
+
+console.log('1====> ' + youtube_id + ' ==> ' + $scope.statusDownload[youtube_id] + ' ==> ');
+console.log($scope.settings);
+
+console.log($scope.statusDownload);
+
+$scope.videos.push( {
+    id: res.rows.item(i).id,
+    title: res.rows.item(i).title,
+    translation: res.rows.item(i).translation,
+    locale_id: res.rows.item(i).locale_id,
+    video_id : res.rows.item(i).video_id,
+    thumb_url: res.rows.item(i).thumb_url,
+    thumb_md5: res.rows.item(i).thumb_md5,
+    url: url,
+    url_low_res: url_low_res,
+    youtube_id: youtube_id,
+    downloaded_date: res.rows.item(i).downloaded_date,
+    downloading: res.rows.item(i).downloading,
+});
+
+//  $scope.videos.push( res.rows.item(i) );
+
+
+          // Make sure to apply scope change so that ng-repeat updates
+        }
+
+
+
+  //       alert( JSON.stringify($scope.category_items) );
+        // loop through the results to find video info
+//        angular.forEach($scope.category_items,function(value,index){
+  //                     alert(value);
+  //                 });
+
+// alert(  $scope.itemsVisible);
+
+} else {
+
+  //            alert('jsonconfig_language : '+ jsonconfig_language );
+if (jsonconfig_language == 2) {
+          var query = "SELECT * FROM video_items WHERE category_id='"+ $stateParams.catid + "'";
+
+
+var query = "SELECT * FROM video_items  INNER JOIN videos  ON video_items.video_id=videos.id WHERE category_id='"+ $stateParams.catid + "'";
+
+
+    //    alert('2 :' +query);
+          $cordovaSQLite.execute(db, query)
+          .then(function(res){
+          //      alert('2e : '+res.rows.length );
+                    if(res.rows.length >0){
+                        $scope.itemsVisible = true;
+
+                        if (res.rows.item(0).locale_id == null) {
+
+                        $scope.showTranslationItems = false;
+
+                        } else {
+
+                        $scope.showTranslationItems = true;
+
+                        }
+
+                        for(var i = 0; i < res.rows.length; i++){
+                      //  alert( JSON.stringify(res.rows.item(i)) );
+
+                        res.rows.item(i).catid = $scope.catid;
+
+                        $scope.videos.push( res.rows.item(i) );
+                        // Make sure to apply scope change so that ng-repeat updates
+                                }
+
+
+
+
+                } else {
+
+                  $scope.noItemsVisible = true;
+
+
+                }
+
+          },
+          function(err){
+            console.log("Error 2 " + JSON.stringify(err));
+          });
+} else{
+                  $scope.noItemsVisible = true;
+}
+          // alert( JSON.stringify(res) );
+          console.log("####console######## NO results found #######"+"Table record #: ");
+
+}
+
+
+return res;
+},
+function(err){
+console.log("Error 1 " + JSON.stringify(err));
+})
+.then(function(res){
+$scope.ItemsVisible = true;
+console.log( JSON.stringify(res) );
 
 });
 

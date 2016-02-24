@@ -462,6 +462,7 @@ console.log('open db 2');
 })
 
 
+<<<<<<< HEAD
 .controller('MainController', function($q, $scope, $state, $stateParams,$ionicHistory,$ionicScrollDelegate, $ionicNavBarDelegate, $http, $window,FeedbackService, FileService, appUpdateService, appDownloadService, $ionicLoading, $ionicPopup, $timeout,  $cordovaSQLite, $cordovaLocalNotification, $cordovaVibration, $cordovaDevice, $cordovaFile, $cordovaFileTransfer,$ionicSideMenuDelegate, $ionicPlatform,$rootScope) {
 
 console.log('Loading Controller starting...');
@@ -487,14 +488,51 @@ $scope.toggleLeft = function() {
 $scope.toggleRight = function() {
   $ionicSideMenuDelegate.toggleRight();
 };
+=======
+.controller('MainController', function($q, $scope, $state, $stateParams,$ionicHistory,$ionicScrollDelegate, $ionicNavBarDelegate, $http, $window, FileService, appUpdateService, appDownloadService, $ionicLoading, $ionicPopup, $timeout,  $cordovaSQLite, $cordovaLocalNotification, $cordovaVibration, $cordovaDevice, $cordovaFile, $cordovaFileTransfer,$ionicSideMenuDelegate, $ionicPlatform,$rootScope) {
+
+console.log('Loading Controller starting...');
+
+$scope.catid = 0;
+
+$scope.navTitle = "{{navTitle}}";
+
+$scope.EntryPageVisible=false;
+
+$scope.signIn = function() {
+//  var navTitle = '';
+
+// $ionicNavBarDelegate.title(navTitle);
+>>>>>>> origin/master
+
+    $state.go('main.home');
+}
+
+$scope.toggleLeft = function() {
+  $ionicSideMenuDelegate.toggleLeft();
+};
+
+$scope.toggleRight = function() {
+  $ionicSideMenuDelegate.toggleRight();
+};
 
 
 // sdb = $cordovaSQLite.openDB({ name: "mammarosa.db" });
 
+<<<<<<< HEAD
+// sdb = $cordovaSQLite.openDB({ name: "mammarosa.db" });
+=======
+  // for opening a background db:
+//  var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
+>>>>>>> origin/master
+
   // for opening a background db:
 //  var db = $cordovaSQLite.openDB({ name: "my.db", bgType: 1 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/master
 // window.localStorage.setItem("config_language", '2');
 $scope.contact = [
            {id: '1', name: "Dayana Oliveira"},
@@ -982,7 +1020,120 @@ console.log('GEEN ACCOUNT INSTELLINGEN');
 
 });
 
+<<<<<<< HEAD
 */
+=======
+var select_query = "SELECT firstname, lastname, username, email,Birthyear,enableBirthyear,enableMailing,lang FROM user_data LIMIT 1;";
+
+$cordovaSQLite.execute(db, select_query)
+.then(function(res){
+//  alert('alternatieve : ' + res.rows.length );
+     if(res.rows.length >0) {
+        //for(var i = 0; i < res.rows.length; i++){
+    //    alert( JSON.stringify(res.rows.item(0)) );
+
+
+$scope.settings = res.rows.item(0);
+
+console.log('SERVICE loaded values:');
+console.log($scope.settings);
+
+//  $timeout(function() {
+console.log('timeout:' + $scope.settings.enableBirthyear);
+// $scope.toggleChange( $scope.settings.enableBirthyear );
+console.log('timeout loaded values:');
+
+console.log($scope.settings);
+
+if (res.rows.item(0).enableBirthyear === 'true') {
+var enableBirthyear = true;
+} else {
+var enableBirthyear = false;
+}
+
+
+if (res.rows.item(0).enableMailing === 'true') {
+var enableMailing = true;
+} else {
+var enableMailing = false;
+}
+
+
+var date = new Date();
+$scope.current = date.getFullYear();
+
+
+if (res.rows.item(0).Birthyear == null) {
+var Birthyear = $scope.current ;
+} else {
+var Birthyear =res.rows.item(0).Birthyear;
+}
+
+
+var start = 1900;  // Minus 10 years from current year
+var end = $scope.current;  // Plus 10 years to current year
+$scope.yearArray = [];
+
+
+console.log('Seaching for :' + Birthyear);
+for(var i=start;i<=end;i++)
+{
+if (i == Birthyear) {
+var selectedBirthyear = 'selected';
+console.log('selected year is : '+ i)
+} else {
+var selectedBirthyear = '';
+}
+
+$scope.yearArray.push({birthyear: i, selected: selectedBirthyear});
+}
+
+console.log($scope.yearArray);
+
+
+$scope.settings = {
+ enableBirthyear: enableBirthyear,
+ enableMailing: enableMailing,
+ Birthyear: Birthyear,
+ firstname: res.rows.item(0).firstname,
+ lastname: res.rows.item(0).lastname,
+ username: res.rows.item(0).username,
+ email: res.rows.item(0).email,
+ locale_id: res.rows.item(0).lang,
+};
+
+
+window.localStorage['config_language'] = res.rows.item(0).lang;
+
+console.log($scope.settings);
+
+//    }, 1000);
+
+          // Make sure to apply scope change so that ng-repeat updates
+       // }
+
+     } else {
+
+console.log('GEEN ACCOUNT INSTELLINGEN');
+
+           $scope.settings = {
+             enableBirthyear: false,
+             enableMailing: false,
+           };
+     }
+
+//     dfd.resolve({
+//       data: $scope.settings
+//     })
+
+}, function (err) {
+
+    console.error(err);
+
+});
+
+
+>>>>>>> origin/master
 var jsonconfig_language = window.localStorage['config_language'];
 console.log("jsonconfig_language : " + jsonconfig_language);
 
@@ -1066,6 +1217,7 @@ appUpdateService.updateJSON($scope, $cordovaFile,$cordovaFileTransfer).then(func
               // error
                 console.log('Error ' + JSON.stringify(error) + ' Creating file');
             });
+<<<<<<< HEAD
 
 
 
@@ -1079,6 +1231,21 @@ appUpdateService.updateJSON($scope, $cordovaFile,$cordovaFileTransfer).then(func
 // Write some text into file
 
 
+=======
+
+
+
+
+
+
+// List of files in test/again
+//$cordovaFile.listDir(fileDir + 'test/one/').then( function(entries) {
+//console.log('list dir: ', entries);
+//});
+// Write some text into file
+
+
+>>>>>>> origin/master
 $cordovaFile.writeFile(fileTransferDir+'/slideshow/test.txt', 'Some text te test filewrite', '').then(function (success) {
   // success
   alert('File slideshow test created succesfuly');
@@ -1344,6 +1511,7 @@ $scope.showPopupArchive = function(popupdata) {
 
 // alert('current clip id: ' + popupdata);
 
+<<<<<<< HEAD
 FeedbackService.getUser($scope,$timeout,'1').then(function(users){
 
 $scope.settings = users.data;
@@ -1358,18 +1526,28 @@ jsonconfig_language = $scope.settings.locale_id;
 
 jsonconfig_language = $scope.settings.locale_id;
 // alert('language used : ' + jsonconfig_language);
+=======
+// alert('language: ' + jsonconfig_language);
+
+console.log( $scope.settings);
+>>>>>>> origin/master
 
   // An elaborate, custom popup
   var myPopupArchive = $ionicPopup.show({
     template: '',
     title: 'Archive',
+<<<<<<< HEAD
     subTitle: 'Wilt u alles in deze categorie: ' + jsonconfig_language,
+=======
+    subTitle: 'Wilt u alles in deze categorie:',
+>>>>>>> origin/master
     scope: $scope,
     buttons: [
       { text: 'Verwijderen',
       type: 'button-positive',
       onTap: function(e) {
 
+<<<<<<< HEAD
 
         FeedbackService.getUser($scope,$timeout,'1').then(function(users){
 
@@ -1388,6 +1566,10 @@ jsonconfig_language = $scope.settings.locale_id;
         console.log('***** QUERY Erasing');
 console.error(query);
 
+=======
+        var query= "SELECT video_items.id,video_items.category_id, video_items.nid,video_items.ordering,video_items.title,item_translations.translation, video_translations.locale_id, video_items.video_id,video_translations.locale_id as VT_locale_id,video_translations.last_upload_date,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res,video_translations.youtube_id as VT_youtube_id,video_extra_data.downloaded_date,video_extra_data.downloading,videos.thumb_md5,videos.thumb_url, videos.url,videos.url_low_res,videos.youtube_id FROM video_items LEFT JOIN videos ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+ $scope.settings.locale_id +"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+ $scope.settings.locale_id +"'  LEFT JOIN video_extra_data ON video_extra_data.video_id=video_items.video_id AND video_extra_data.locale_id='"+ $scope.settings.locale_id +"' WHERE category_id='"+ popupdata  +"';";
+        console.log(query);
+>>>>>>> origin/master
 
 
         // var select_query = "SELECT *,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res FROM video_items  LEFT JOIN videos  ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+$scope.settings.locale_id+"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+$scope.settings.locale_id+"' WHERE category_id='"+popupdata+"';";
@@ -1421,8 +1603,12 @@ console.error(query);
       id: res.rows.item(i).id,
       locale_id: locale_id,
       video_id : res.rows.item(i).video_id,
+<<<<<<< HEAD
       thumb_md5:
       res.rows.item(i).thumb_md5,
+=======
+      thumb_md5: res.rows.item(i).thumb_md5,
+>>>>>>> origin/master
       url: url,
       url_low_res: url_low_res,
       youtube_id: youtube_id,
@@ -1487,17 +1673,25 @@ console.error(query);
 
         });
 
+<<<<<<< HEAD
 });
 
         return;
       }
 
+=======
+        return;
+      }
+
+
+>>>>>>> origin/master
       },
       {
         text: '<b>Download</b>',
         type: 'button-positive',
         onTap: function(e) {
 
+<<<<<<< HEAD
     //      var query= "SELECT video_items.id,video_items.category_id, video_items.nid,video_items.ordering,video_items.title,item_translations.translation, video_translations.locale_id, video_items.video_id,video_translations.locale_id as VT_locale_id,video_translations.last_upload_date,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res,video_translations.youtube_id as VT_youtube_id,video_extra_data.downloaded_date,video_extra_data.downloading,videos.thumb_md5,videos.thumb_url, videos.url,videos.url_low_res,videos.youtube_id FROM video_items LEFT JOIN videos ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+ $scope.settings.locale_id +"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+ $scope.settings.locale_id +"'  LEFT JOIN video_extra_data ON video_extra_data.video_id=video_items.video_id AND video_extra_data.locale_id='"+ $scope.settings.locale_id +"' WHERE category_id='"+ popupdata  +"';";
           // var select_query = "SELECT *,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res FROM video_items  LEFT JOIN videos  ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+$scope.settings.locale_id+"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+$scope.settings.locale_id+"' WHERE category_id='"+popupdata+"';";
 
@@ -1512,6 +1706,11 @@ console.error(query);
           var query= "SELECT video_items.id,video_items.category_id, video_items.nid,video_items.ordering,video_items.title,item_translations.translation, video_translations.locale_id VT_locale_id, video_items.video_id,video_translations.locale_id,video_translations.last_upload_date,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res,video_translations.youtube_id as VT_youtube_id,video_extra_data.downloaded_date,video_extra_data.downloading,videos.thumb_md5,videos.thumb_url, videos.url,videos.url_low_res,videos.youtube_id FROM video_items LEFT JOIN videos ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+ jsonconfig_language+"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+ jsonconfig_language+"'  LEFT JOIN video_extra_data ON video_extra_data.video_id=video_items.video_id AND video_extra_data.locale_id='"+ jsonconfig_language+"' WHERE category_id='"+ popupdata +"';";
 
 
+=======
+          var query= "SELECT video_items.id,video_items.category_id, video_items.nid,video_items.ordering,video_items.title,item_translations.translation, video_translations.locale_id, video_items.video_id,video_translations.locale_id as VT_locale_id,video_translations.last_upload_date,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res,video_translations.youtube_id as VT_youtube_id,video_extra_data.downloaded_date,video_extra_data.downloading,videos.thumb_md5,videos.thumb_url, videos.url,videos.url_low_res,videos.youtube_id FROM video_items LEFT JOIN videos ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+ $scope.settings.locale_id +"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+ $scope.settings.locale_id +"'  LEFT JOIN video_extra_data ON video_extra_data.video_id=video_items.video_id AND video_extra_data.locale_id='"+ $scope.settings.locale_id +"' WHERE category_id='"+ popupdata  +"';";
+          // var select_query = "SELECT *,video_translations.url as VT_url,video_translations.url_low_res as VT_url_low_res FROM video_items  LEFT JOIN videos  ON video_items.video_id=videos.id LEFT JOIN video_translations ON video_items.video_id = video_translations.source_id  AND video_translations.locale_id='"+$scope.settings.locale_id+"' LEFT JOIN item_translations ON item_translations.source_id=video_items.id AND item_translations.locale_id='"+$scope.settings.locale_id+"' WHERE category_id='"+popupdata+"';";
+
+>>>>>>> origin/master
           $cordovaSQLite.execute(db, query)
           .then(function(res){
           //  alert('alternatieve : ' + res.rows.length );
@@ -1550,7 +1749,11 @@ var collectionIDS = [];
 
                   }
 
+<<<<<<< HEAD
                   console.log('COLLECTION : ', JSON.stringify(collectionIDS) );
+=======
+                  console.log('COLLECTION : ', collectionIDS );
+>>>>>>> origin/master
 
 for(var i = 0; i < collectionIDS.length; i++){
 $scope.toggle_visibility(collectionIDS[i]);
@@ -1583,6 +1786,7 @@ $timeout(function() {
 
           });
 
+<<<<<<< HEAD
 
 });
 
@@ -1591,6 +1795,10 @@ $timeout(function() {
 
 
 
+=======
+          return;
+        }
+>>>>>>> origin/master
       },
     ]
   });
@@ -1768,17 +1976,30 @@ return success;
                 });
 
             //  $window.location.reload(true);
+<<<<<<< HEAD
+=======
+
+};
+>>>>>>> origin/master
 
 };
 
 
 
+<<<<<<< HEAD
 
 $scope.toggle_visibility = function (item) {
 
                   console.log('*** TOGGLE VISIBILITY ***')
                   console.log( JSON.stringify(item));
 
+=======
+$scope.toggle_visibility = function (item) {
+
+                  console.log('*** TOGGLE VISIBILITY ***')
+                  console.log(item);
+
+>>>>>>> origin/master
 
                     var youtube_id = item.youtube_id;
                     $scope.statusDownload[youtube_id] = 9;
