@@ -11,10 +11,8 @@
   <access origin="*" subdomains="true"/>
   <allow-navigation href="*"/>
   <allow-navigation href="file://*/*"/>
-  <allow-navigation href="https://*/*" />
-  <allow-navigation href="data:*" />
-
-
+  <allow-navigation href="https://*/*"/>
+  <allow-navigation href="data:*"/>
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>
