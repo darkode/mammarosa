@@ -13,17 +13,14 @@ angular.module('starter.controllers', ['ngCordova', 'ngCordova.plugins.file'] )
   //    $('.portrait-mode').show();
 //      $('#ionHideTabs').attr('ng-show',false);
 //    var tabs = document.querySelectorAll('div.tabs');
-
-<<<<<<< HEAD
 //  console.log('TABS: ');
 //  console.log(angular.element(tabs[0]) );
 //  console.log( tabs[0] );
-
-    //  angular.element(tabs[0]).css('display', '');
+//  angular.element(tabs[0]).css('display', '');
 
     if(window.orientation == -90 || window.orientation == 90) {
       // $('.portrait-mode').hide();
-=======
+
 })
 
 .controller('GalleryCtrl', function($scope, $http, $ionicPlatform, $cordovaSQLite, $cordovaFile, $ionicSlideBoxDelegate,$ionicSideMenuDelegate) {
@@ -132,13 +129,9 @@ $scope.hideNavBar = false;
 
 $scope.itemsVisible = true;
 $scope.noItemsVisible = false;
->>>>>>> origin/master
-
   //    document.querySelector('div.tabs').style.display = 'none';
   //    angular.element(document.querySelector('ion-content.has-tabs')).css('bottom', 0);
 
-
-<<<<<<< HEAD
 // ionic.Platform.fullScreen(true, false);
 
       orientation = "landscape";
@@ -356,25 +349,17 @@ $scope.EntryPageVisible = true;
   return $scope.EntryPageVisible;
                 });
 })
-<<<<<<< HEAD
-=======
-
 
 .controller('ChatsCtrl', function($scope,$cordovaSQLite,$ionicSideMenuDelegate) {
->>>>>>> origin/master
 
 //  console.log('localStorage set, loading category_items');
 //  $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
 
 .controller('ChatsCtrl', function($scope,$cordovaSQLite,$ionicSideMenuDelegate) {
 
-<<<<<<< HEAD
 //  console.log('localStorage set, loading category_items');
 //  $scope.jsondata = JSON.parse(window.localStorage.getItem("profile"));
 
-
-=======
->>>>>>> origin/master
 alert('ChatsCtrl');
 
  $scope.chats = $scope.jsondata.category_items;
