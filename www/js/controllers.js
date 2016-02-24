@@ -2,6 +2,9 @@
 
 angular.module('starter.controllers', ['ngCordova', 'ngCordova.plugins.file'] )
 .controller('DashCtrl', function($scope) {
+
+
+
 })
 
 .controller('GalleryCtrl', function($scope, $http, $ionicPlatform, $cordovaSQLite, $cordovaFile, $ionicSlideBoxDelegate,$ionicSideMenuDelegate) {
