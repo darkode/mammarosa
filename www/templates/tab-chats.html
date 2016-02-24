@@ -1,7 +1,17 @@
+<ion-view cache-view="false">
+<ion-nav-title style="font-size:14px">{{navTitle}}</ion-nav-title>
 
-<ion-view view-title='Sub Categories' cache-view="false">
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon button-clear  ion-navicon"></button>
+  </ion-nav-buttons>
 
-<ion-content class="my-menu">
+
+  <ion-nav-buttons side="right">
+      <button class="button button-icon button-clear ion-earth custom-text-color-pink-light" menu-toggle="right"></button>
+  </ion-nav-buttons>
+
+
+<ion-content has-header="true" padding="true" class="my-menu custom-background-content">
 
   <FRAMESET cols="20%, 80%">
     <div ng-show="htmltext!='undefined'">
@@ -12,8 +22,19 @@
 
 <div ng-show="htmltext=='undefined'">
     <ion-list>
-      <ion-item class="ionListItem item-icon-right" ng-repeat="category_item in itemsubjects | orderBy: 'ordering' " type="item-text-wrap" href="#/tab/chats/{{category_item.id}}">
-        <span class="elementCenterAlign">{{category_item.title}}</span>
+
+    <div class="elementCenterAlign" ng-if="itemsVisible">
+      <ion-item class="ionListItem item-icon-right" ng-repeat="category_item in category_items | orderBy: 'ordering' " type="item-text-wrap" href="#/main/chats/{{category_item.id}}">
+
+
+
+
+
+        <span class="elementCenterAlign" ng-if="!category_item.translation">{{category_item.title}}</span>
+
+        <span class="elementCenterAlign" ng-if="category_item.translation">{{category_item.translation}}<br />
+          <small>{{category_item.title}}</small>
+        </span>
 
 
 
@@ -24,10 +45,22 @@
                             <div class="item-icon-right" ng-if="!category_item.intro_text">
                                 <i class="icon ion-chevron-right icon-accessory"></i>
                             </div>
-
       </ion-item>
+</div>
+
+
+
+
+  <div class="elementCenterAlign" ng-if="noItemsVisible">
+      <item>
+          <b><i>GEEN DATA</i></b>
+      </item>
+  </div>
+
+
     </ion-list>
 </div>
 
   </ion-content>
+
 </ion-view>

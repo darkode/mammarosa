@@ -2,13 +2,19 @@
 <widget id="com.ionicframework.myapp728258" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
   <name>myapp</name>
   <description>
-        An Ionic Framework and Cordova project.
+        An Ionic Framework and Cordova project
     </description>
   <author email="hi@ionicframework" href="http://ionicframework.com/">
-      Ionic Framework Team
+      Raimond Albers
     </author>
   <content src="index.html"/>
-  <access origin="*"/>
+  <access origin="*" subdomains="true"/>
+  <allow-navigation href="*"/>
+  <allow-navigation href="file://*/*"/>
+  <allow-navigation href="https://*/*" />
+  <allow-navigation href="data:*" />
+
+
   <preference name="webviewbounce" value="false"/>
   <preference name="UIWebViewBounce" value="false"/>
   <preference name="DisallowOverscroll" value="true"/>

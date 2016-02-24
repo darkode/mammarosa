@@ -1,0 +1,64 @@
+<ion-view view-title="Languages">
+
+  <ion-nav-buttons side="left">
+    <button menu-toggle="left" class="button button-icon icon ion-navicon"></button>
+  </ion-nav-buttons>
+
+
+  <ion-content has-header="true" padding="true" class="custom-background-content">
+
+    <label class="item item-radio" ng-repeat="language in languages | filter : searchText | orderBy : 'language.ordering'">
+        <input type="checkbox" ng-model="language.selected" />
+        <div class="radio-content">
+            <div class="item-content disable-pointer-events">
+                 <p>{{language.source_name}}</p>
+            </div>
+            <i class="radio-icon disable-pointer-events ion-checkmark"></i>
+        </div>
+    </label>
+
+
+
+
+        <ion-list radio-group>
+          <ion-radio class="item radio-content item-radio"  name='language'  item="language"
+                      ng-repeat="language in languages"
+                      ng-value="language.id"
+                      ng-model="data.serverSide"
+                      ng-change="serverSideChange(language)"
+                      ng-cclick="clicker(language)">
+
+
+            <p>{{language.source_name}}</p>
+            <p>{{language.name}}</p>
+
+           </ion-radio>
+         </ion-list>
+
+<br />
+<br />
+<br />
+
+  </ion-content>
+
+
+  <div class="tabs tabs-icon-only">
+        <a nav-clear class="tab-item disable-user-behavior" title="Home" nav-clear ui-sref="main.home">
+          <i class="icon app_about"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+        <a nav-clear class="tab-item disable-user-behavior active" title="Gallery" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.gallery">
+          <i class="icon app_website_screenshots"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+
+        <a nav-clear class="tab-item disable-user-behavior active" title="Account" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.account">
+          <i class="icon app_settings"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+
+
+        <a nav-clear class="tab-item disable-user-behavior" title="Languages" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.languages">
+          <i class="icon app_language"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+      </div>
+
+
+</ion-view>

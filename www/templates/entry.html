@@ -1,0 +1,45 @@
+<ion-view left-buttons="leftButtons">
+
+        <ion-content has-header="true" padding="true" class="custom-background-content" ng-controller="CheckDatabasaeInit">
+
+<div class="centerme company-logo-locate">
+<img src="img/icons/logo.png" class="centerme">
+</div>
+<br />
+
+            <div ng-show="EntryPageVisible" class="centerme ng-hide">
+            <div class="list" ng-show="EntryPageVisible">
+              <label class="item item-input">
+                <span class="input-label">Username</span>
+                <input type="text" ng-model="user.username">
+              </label>
+              <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" ng-model="user.password">
+              </label>
+            </div>
+            <div class="padding">
+              <button class="button button-block button-positive" ng-click="signIn(user)">
+                Sign-In
+              </button>
+              <p class="text-center">
+                <a href="#/forgot-password">Forgot password</a>
+              </p>
+            </div>
+            </div>
+
+            <div ng-show="!EntryPageVisible" class="centerme">
+            <spinner></spinner>
+            <br />
+
+            <div class="padding">
+              <button class="button button-block button-positive" ng-click="reloadJsonData()">
+                Update database
+              </button>
+
+              <progress ng-hide="{{downloadProgress}}" max="100" value="{{downloadProgress}}"></progress>
+              <div><h3 class="centerme">{{downloadProgressCounter}}</h3></div>
+            </div>
+
+          </ion-content>
+        </ion-view>

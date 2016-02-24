@@ -1,0 +1,374 @@
+// setup an abstract state for the tabs directive
+  .state('tab', {
+  url: '/tab',
+  abstract: true,
+  templateUrl: 'templates/tabs.html'
+})
+
+// Each tab has its own nav history stack:
+
+.state('tab.dash', {
+  url: '/dash',
+  views: {
+    'tab-dash': {
+      templateUrl: 'templates/tab-dash.html',
+      controller: 'reloadDataCtrl'
+    }
+  }
+})
+
+.state('tab.maincategories', {
+    url: '/maincategories',
+    views: {
+      'tab-chats': {
+        templateUrl: 'templates/tab-maincategories.html',
+        controller: 'MainCategoryCtrl'
+      }
+    }
+  })
+
+
+  .state('tab.items', {
+      url: '/items/:catid',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/tab-chats.html',
+          controller: 'CategoryCtrl'
+        }
+      }
+    })
+
+    .state('tab.chat-detail', {
+      url: '/chats/:catid',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/chat-detail.html',
+          controller: 'ChatDetailCtrl'
+        }
+      }
+    })
+
+
+    .state('tab.movie-detail', {
+      url: '/clips/:videoclipid',
+      views: {
+        'tab-chats': {
+          templateUrl: 'templates/movie-detail.html',
+          controller: 'ClipsDetailCtrl'
+        }
+      }
+    })
+
+
+  .state('tab.gallery', {
+      url: '/gallery',
+      views: {
+        'tab-gallery': {
+          templateUrl: 'templates/tab-gallery.html',
+          controller: 'GalleryCtrl'
+        }
+      }
+    })
+
+
+
+
+
+  .state('tab.languages', {
+    url: '/languages',
+    views: {
+      'tab-languages': {
+        templateUrl: 'templates/tab-languages.html',
+        controller: 'LanguagesCtrl'
+      }
+    }
+  })
+
+
+  .state('tab.account', {
+      url: '/account',
+      views: {
+        'tab-account': {
+          templateUrl: 'templates/tab-account.html',
+          controller: 'AccountCtrl'
+        }
+      }
+    })
+
+
+
+// if none of the above states are matched, use this as the fallback
+$urlRouterProvider.otherwise('/tab/dash');
+
+})
+
+
+
+
+
+*/*/*/*/*//
+
+
+
+              <ion-list>
+                            <ion-item class="ionListItemWhite" ng-repeat="item in videos"  item-type="item-icon-left item-icon-right">
+                              <div class="my-left-icon" >
+                                <span id="{{item.youtube_id}}" ng-show="check_visibility(item)">
+
+                                  <img src="img/icons/cell_download.png" height="32px" ng-if="!item.downloaded" nng-click="toggle_visibility(item)" >
+
+                                  <img src="img/icons/cell_downloaded.png" height="32px" ng-if="item.downloaded" nng-click="downloadedclip(item)" >
+                                  </span>
+
+
+                                  <div id="{{item.youtube_id}}_loader" ng-hide="check_visibility(item)">
+                                        <ion-spinner></ion-spinner>
+                                  </div>
+
+                              </div>
+
+                              <i class="item-profile">
+                              <img ng-src="{{appCacheDirectory}}{{item.thumb_md5}}.png" height="60px">
+                            </i>
+                              &nbsp;
+{{item.title}}<br />
+{{item.downloading}} / {{item.youtube_id}}
+
+<!--
+                                <ion-option-button class="button-info" href="#/tab/clips/{{item.video_id}}">
+
+                                </ion-option-button>
+-->
+
+
+                        <div class="item-icon-right" ng-click="viewclip(item)">
+                            <i class="icon ion-chevron-right icon-accessory"></i>
+                        </div>
+
+                </ion-item>
+
+            </ion-list>
+
+
+
+            */*/*/*/*/*/*/*/*/*/
+
+            <div class="item-icon-right" ng-click="viewclip(item)">
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </div>
+
+
+
+
+
+            /*/*/*/*/*/*
+
+
+                            <a href="#/main/clips/{{item.video_id}}" class="item-thumbnail-right custom-thumbnail"   mng-show="check_visibility(item)">
+
+                            </a>
+
+
+
+
+
+
+
+
+
+
+
+
+/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
+
+
+
+
+DownloadUrl =  urldecode(DownloadUrl);
+DownloadUrl = encodeURI(DownloadUrl);
+
+var questionmark = DownloadUrl.indexOf('?');
+
+
+
+
+console.log('The Download URL : ' + DownloadUrl);
+
+
+
+
+
+//getImageDataURL(DownloadUrl,  tableName+'_'+DownloadFilename + '.png', onSuccess, onError);
+
+
+if (questionmark>1230) {
+DownloadUrl = DownloadUrl.substring(0,questionmark );
+
+//getImageDataURL(DownloadUrl, 'slideshow-' + DownloadFilename+ '.png', onSuccess, onError);
+
+/*
+
+$http.get(DownloadUrl).then(function(resp) {
+    console.log('Success');
+    // For JSON responses, resp.data contains the result
+    console.log(fileDir  + "cache/" + 'slideshow_' + DownloadFilename+ '.png');
+    console.log(fileTransferDir  + "cache/" + 'slideshow_' + DownloadFilename+ '.png');
+
+// $cordovaFile.createFile(fileDir  + "/" + 'slideshow-' + DownloadFilename+ '.png', true).then( function(fileEntry) {
+
+
+saveImage(fileTransferDir  + "cache/", DownloadFilename+ '.png', resp.data);
+
+
+
+
+//});
+
+  }, function(err) {
+    console.error('ERR', err);
+    // err.status will contain the status code
+  })
+*/
+
+} else {
+
+             console.log(DownloadUrl);
+             //    var DownloadFilename = DownloadUrl.substring(DownloadUrl.lastIndexOf('/')+1);
+             DownloadFilename = tableName + '_' + DownloadFilename + '.png';
+                    var obj = DownloadUrl;
+             console.log('New download file : ' + DownloadFilename);
+             // var url = DownloadUrl;
+             var targetPath = fileTransferDir  + "cache/" + DownloadFilename;
+             var trustHosts = true;
+             var options = {};
+
+             var name = targetPath.substr(targetPath.lastIndexOf('/') + 1);
+             var resultCheckFile;
+
+               console.log('Checking DownloadUrl: ' + DownloadUrl + ' <= ');
+               console.log('Checking DownloadFilename: ' + DownloadFilename + ' <= ');
+
+               FileService.checkFile($scope, $cordovaFile, obj, fileTransferDir  + "cache/" , DownloadFilename)
+               .then(
+                         function (result) {
+                              // promise was fullfilled (regardless of outcome)
+                              // checks for information will be peformed here
+// console.log('promise was fullfilled (regardless of outcome');
+// console.log( JSON.stringify(result) );
+
+                          },
+                          function (error) {
+                              // handle errors here
+console.log('download this file:' + 'cdvfile://localhost/files-external/'+ error[0].file);
+// console.log( error );
+
+
+                              var trustHosts = true;
+                              var options = {};
+
+//error[0].dir
+
+var url = error[0].obj;
+
+console.log('URL 1 : '  + JSON.stringify(url));
+
+// url =  urldecode(url);
+
+
+
+console.log('URL 2 : ' + JSON.stringify(url));
+
+// url= encodeURIComponent(url);
+// console.log('URL 3 : ' + url);
+
+
+
+                               $cordovaFileTransfer.download(url, 'cdvfile://localhost/files-external/cache/'+ error[0].file, options, trustHosts)
+                                 .then(function(result) {
+                                   // Success!
+                                   console.log(result);
+                                   console.log('-----> Downloaded image! -> ' + error[0].file);
+                                 }, function(error) {
+                                   // Error
+
+                                  console.log('-----> Downloaded image 2nd try  ERROR! -> ');
+
+                                   console.log( JSON.stringify(error) );
+  var  filem = error.target
+  var DownloadFilename = filem.substr(filem.lastIndexOf('/') + 1);
+
+
+console.log('** DownloadFilename : ' + DownloadFilename );
+console.log('** error.source : ' + error.source );
+
+
+
+
+                                  var data_error = error.body;
+// data_error.replace("\\u0000", "");
+
+console.log('return from getImageDataURL');
+
+
+
+
+
+
+/*
+                                  $cordovaFile.writeFile(fileTransferDir,name, parseUnicode(data_error), true).then( function(result) {
+
+console.log('WRITE TO FILE *******');
+console.log(result);
+console.log(parseUnicode(data_error));
+}, function(error) {
+  // Error
+
+  console.log('-----> Downloaded image 2 ERROR! -> ');
+     console.log( JSON.stringify(error) );
+                                  });
+*/
+
+
+                                 }, function (progress) {
+                                   $timeout(function () {
+                                    $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+                                     console.log($scope.downloadProgress);
+                                 });
+                                 });
+
+
+                              }
+                 );  // end then
+}
+
+
+
+
+
+-/-/-*-/-/-*-*-/-/-*-*
+
+
+
+  <div class="tabs tabs-icon-only">
+        <a nav-clear class="tab-item disable-user-behavior" title="Home" nav-clear ui-sref="main.home">
+          <i class="icon app_about"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+        <a nav-clear class="tab-item disable-user-behavior active" title="Gallery" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.gallery">
+          <i class="icon app_website_screenshots"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+
+        <a nav-clear class="tab-item disable-user-behavior active" title="Account" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.account">
+          <i class="icon app_settings"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+
+        <a nav-clear class="tab-item disable-user-behavior" title="Languages" icon-on="ion-ios7-filing" icon-off="ion-ios7-filing-outline" ui-sref="main.languages">
+          <i class="icon app_language"></i><span class="tab-title ng-binding" ng-bind-html="title"></span>
+        </a>
+      </div>
+
+
+
+
+  *-*-*-*-*-*-*-*-*-*-/*/-*-*-/*/*-*-*-/*/-*-**-/*
+
+  
